@@ -1,0 +1,21 @@
+[user]
+  name = Pawel Piotrowicz
+  email = ppiotrowicz@gmail.com
+[alias]
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  st = status -sb
+  staged = diff --cached
+  ign = ls-files -o -i --exclude-standard
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
+[core]
+  excludesfile = /Users/ppiotrowicz/.gitignore
+  editor = vim
+	autocrlf = input
+[apply]
+  whitespace = nowarn
+[format]
+  pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
