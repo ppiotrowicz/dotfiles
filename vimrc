@@ -29,6 +29,7 @@ set laststatus=2				" always show status bar
 let g:gitgutter_sign_column_always = 1		" always show git gutter
 
 " scheme
+let &t_Co=256
 set background=dark
 colorscheme solarized
 
@@ -40,6 +41,11 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set mouse=a    " use mouse in console vim
+highlight clear SignColumn
+highlight GitGutterAdd guibg=234
+highlight GitGutterChange guibg=234
+highlight GitGutterDelete guibg=234
+highlight GitGutterChangeDelete guibg=234
 
 " associate *.todo with todo filetype
 au BufRead,BufNewFile *.todo set filetype=todo
