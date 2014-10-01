@@ -41,6 +41,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 set mouse=a    " use mouse in console vim
+set scrolloff=5 " always show at least 5 lines at the top and bottom while scrolling
+
 highlight clear SignColumn
 highlight GitGutterAdd guibg=234
 highlight GitGutterChange guibg=234
