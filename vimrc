@@ -23,7 +23,35 @@ Plugin 'scrooloose/syntastic'
 call vundle#end()
 filetype plugin indent on
 
-" plugin customizations
+" -----------------------------------------------------------------------------
+"  SETTINGS
+" -----------------------------------------------------------------------------
+let &t_Co=256             " use 256 colors
+set background=dark       " use dark background
+colorscheme solarized     " use solarized theme
+syntax enable
+set number					      " show line numbers
+set clipboard=unnamed			" system clipboard to * register
+set tabstop=2             " tab == 2 spaces
+set shiftwidth=2          " << and >> use 2 spaces
+set expandtab             " change tabs to spaces
+set mouse=a               " use mouse in console vim
+set scrolloff=3           " always show at least 3 lines at the top and bottom while scrolling
+set hidden                " Handle multiple buffers better.
+set wildmenu              " Enhanced command line completion.
+set wildmode=list:longest " Complete files like a shell.
+set ignorecase            " Case-insensitive searching.
+set smartcase             " But case-sensitive if expression contains a capital letter.
+set incsearch             " Highlight matches as you type.
+set hlsearch              " Highlight matches.
+set nobackup              " Don't make a backup before overwriting a file.
+set nowritebackup         " And again.
+set backupdir=~/.vim/backups  " save backups here
+set directory=~/.vim/swaps    " and swaps here
+
+" associate *.todo with todo filetype
+au BufRead,BufNewFile *.todo set filetype=todo
+
 " -----------------------------------------------------------------------------
 "  POWERLINE
 " -----------------------------------------------------------------------------
@@ -68,35 +96,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
-
-" -----------------------------------------------------------------------------
-"  SETTINGS
-" -----------------------------------------------------------------------------
-let &t_Co=256             " use 256 colors
-set background=dark       " use dark background
-colorscheme solarized     " use solarized theme
-syntax enable
-set number					      " show line numbers
-set clipboard=unnamed			" system clipboard to * register
-set tabstop=2             " tab == 2 spaces
-set shiftwidth=2          " << and >> use 2 spaces
-set expandtab             " change tabs to spaces
-set mouse=a               " use mouse in console vim
-set scrolloff=3           " always show at least 3 lines at the top and bottom while scrolling
-set hidden                " Handle multiple buffers better.
-set wildmenu              " Enhanced command line completion.
-set wildmode=list:longest " Complete files like a shell.
-set ignorecase            " Case-insensitive searching.
-set smartcase             " But case-sensitive if expression contains a capital letter.
-set incsearch             " Highlight matches as you type.
-set hlsearch              " Highlight matches.
-set nobackup              " Don't make a backup before overwriting a file.
-set nowritebackup         " And again.
-set backupdir=~/.vim/backups  " save backups here
-set directory=~/.vim/swaps    " and swaps here
-
-" associate *.todo with todo filetype
-au BufRead,BufNewFile *.todo set filetype=todo
 
 " -----------------------------------------------------------------------------
 " KEYBOARD
