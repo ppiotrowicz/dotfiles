@@ -6,6 +6,8 @@
   st = status -sb
   staged = diff --cached
   ign = ls-files -o -i --exclude-standard
+  co = checkout
+  ci = commit
 [color]
   diff = auto
   status = auto
