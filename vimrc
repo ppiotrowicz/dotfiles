@@ -19,6 +19,7 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mileszs/ack.vim'
 Plugin 'danro/rename.vim'
 Plugin 'OrangeT/vim-csharp'
+Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 call vundle#end()
 filetype plugin indent on
@@ -53,13 +54,11 @@ set directory=~/.vim/swaps    " and swaps here
 au BufRead,BufNewFile *.todo set filetype=todo
 
 " -----------------------------------------------------------------------------
-"  POWERLINE
+" AIRLINE
 " -----------------------------------------------------------------------------
-python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages")
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-set laststatus=2				" always show status bar
+let g:airline#extensions#tabline#enabled = 1    " smarter tabline (shows buffers when there's only one tab open)
+let g:airline_powerline_fonts = 1               " use fonts from patched powerline fonts
+set laststatus=2                                " always show status bar
 set showtabline=2       " Always display the tabline, even if there is only one tab
 set noshowmode          " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
