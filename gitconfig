@@ -16,7 +16,7 @@
 [core]
   excludesfile = /Users/ppiotrowicz/.gitignore
   editor = vim
-	autocrlf = input
+  autocrlf = input
 [apply]
   whitespace = nowarn
 [format]
