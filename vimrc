@@ -5,6 +5,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
@@ -22,15 +23,25 @@ Plugin 'OrangeT/vim-csharp'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
+Plugin 'mattn/emmet-vim'
 call vundle#end()
 filetype plugin indent on
 
 " -----------------------------------------------------------------------------
-"  SETTINGS
+"  THEME
 " -----------------------------------------------------------------------------
 let &t_Co=256             " use 256 colors
 set background=dark       " use dark background
-colorscheme solarized     " use solarized theme
+let g:gruvbox_sign_column = 'dark0'
+colorscheme gruvbox       " use gruvbox theme
+
+if !has("gui_running")
+   let g:gruvbox_italic=0
+endif
+
+" -----------------------------------------------------------------------------
+"  SETTINGS
+" -----------------------------------------------------------------------------
 syntax enable
 set number					      " show line numbers
 set clipboard=unnamed			" system clipboard to * register
@@ -50,6 +61,7 @@ set nobackup              " Don't make a backup before overwriting a file.
 set nowritebackup         " And again.
 set backupdir=~/.vim/backups  " save backups here
 set directory=~/.vim/swaps    " and swaps here
+set backspace=2           " backspace for normal human beings
 
 " associate *.todo with todo filetype
 au BufRead,BufNewFile *.todo set filetype=todo
@@ -68,10 +80,10 @@ set noshowmode          " Hide the default mode text (e.g. -- INSERT -- below th
 " -----------------------------------------------------------------------------
 let g:gitgutter_sign_column_always = 1		" always show git gutter
 highlight clear SignColumn
-highlight GitGutterAdd guibg=234
-highlight GitGutterChange guibg=234
-highlight GitGutterDelete guibg=234
-highlight GitGutterChangeDelete guibg=234
+" highlight GitGutterAdd guibg=235
+" highlight GitGutterChange guibg=235
+" highlight GitGutterDelete guibg=235
+" highlight GitGutterChangeDelete guibg=235
 
 " -----------------------------------------------------------------------------
 " SYNTASTIC
