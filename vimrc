@@ -26,7 +26,6 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 Plugin 'mattn/emmet-vim'
-"Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/neocomplete.vim'
 call vundle#end()
 filetype plugin indent on
@@ -66,6 +65,10 @@ set nowritebackup         " And again.
 set backupdir=~/.vim/backups  " save backups here
 set directory=~/.vim/swaps    " and swaps here
 set backspace=2           " backspace for normal human beings
+set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
+set autoread              " If a file is changed outside of vim, automatically reload it without asking
+set winheight=30
+set winminheight=5
 
 " associate *.todo with todo filetype
 au BufRead,BufNewFile *.todo set filetype=todo
@@ -190,6 +193,7 @@ augroup omnisharp_commands
     autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
     autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
     autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
+    autocmd FileType cs nnoremap <leader>t :!bundle exec rake tests<cr>
     "autocmd FileType cs nnoremap <C-K> :OmniSharpNavigateUp<cr> "navigate up by method/property/field
     "autocmd FileType cs nnoremap <C-J> :OmniSharpNavigateDown<cr> "navigate down by method/property/field
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
@@ -200,7 +204,7 @@ augroup END
 " this setting controls how long to wait (in ms) before fetching type / symbol information.
 set updatetime=500
 " Remove 'Press Enter to continue' message when type information is longer than one line.
-set cmdheight=2
+"set cmdheight=2
 
 " Contextual code actions (requires CtrlP)
 nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
