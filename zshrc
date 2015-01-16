@@ -1,13 +1,20 @@
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="miloshadzic"
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
 
-plugins=(git hub z brew rails ppiotrowicz)
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
 
-export PATH="/usr/local/bin:$PATH"
-export EDITOR=vim
-
-alias todo="vim ~/current.todo"
-
+# Customize to your needs...
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+alias cls=clear
+alias be="bundle exec"
 
-source $ZSH/oh-my-zsh.sh
+source /Users/ppiotrowicz/codez/base/grid/extras/shell-completion/grid_completion.zsh
+
+#/Users/ppiotrowicz/.vim/bundle/gruvbox/gruvbox_256palette_osx.sh
