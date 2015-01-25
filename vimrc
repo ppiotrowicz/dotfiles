@@ -67,8 +67,6 @@ set directory=~/.vim/swaps    " and swaps here
 set backspace=2           " backspace for normal human beings
 set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
 set autoread              " If a file is changed outside of vim, automatically reload it without asking
-set winheight=30
-set winminheight=5
 
 " associate *.todo with todo filetype
 au BufRead,BufNewFile *.todo set filetype=todo
@@ -115,10 +113,6 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|hg|svn)$',
   \ 'file': '\v\.(exe|so|dll)$',
   \ }
-
-" -----------------------------------------------------------------------------
-" NeoComplete
-" -----------------------------------------------------------------------------
 
 " -----------------------------------------------------------------------------
 " OMNISHARP
@@ -199,8 +193,6 @@ augroup omnisharp_commands
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
 augroup END
 
-
-
 " this setting controls how long to wait (in ms) before fetching type / symbol information.
 set updatetime=500
 " Remove 'Press Enter to continue' message when type information is longer than one line.
@@ -238,21 +230,21 @@ set hidden
 let mapleader = ","
 
 " shortcuts for Rails commands
-map <Leader>m :Rmodel
-map <Leader>c :Rcontroller
-map <Leader>v :Rview
-map <Leader>u :Runittest
-map <Leader>f :Rfunctionaltest
-map <Leader>tm :RTmodel
-map <Leader>tc :RTcontroller
-map <Leader>tv :RTview
-map <Leader>tu :RTunittest
-map <Leader>tf :RTfunctionaltest
-map <Leader>sm :RSmodel
-map <Leader>sc :RScontroller
-map <Leader>sv :RSview
-map <Leader>su :RSunittest
-map <Leader>sf :RSfunctionaltest
+"map <Leader>m :Rmodel
+"map <Leader>c :Rcontroller
+"map <Leader>v :Rview
+"map <Leader>u :Runittest
+"map <Leader>f :Rfunctionaltest
+"map <Leader>tm :RTmodel
+"map <Leader>tc :RTcontroller
+"map <Leader>tv :RTview
+"map <Leader>tu :RTunittest
+"map <Leader>tf :RTfunctionaltest
+"map <Leader>sm :RSmodel
+"map <Leader>sc :RScontroller
+"map <Leader>sv :RSview
+"map <Leader>su :RSunittest
+"map <Leader>sf :RSfunctionaltest
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
