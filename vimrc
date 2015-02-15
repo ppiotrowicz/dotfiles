@@ -198,6 +198,17 @@ set updatetime=500
 " Remove 'Press Enter to continue' message when type information is longer than one line.
 "set cmdheight=2
 
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
 " -----------------------------------------------------------------------------
 " KEYBOARD
 " -----------------------------------------------------------------------------
@@ -209,6 +220,11 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" Whitespace
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+" Format file
+nmap _= :call Preserve("normal gg=G")<CR>
+
 " Toggle NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
@@ -219,3 +235,7 @@ map <C-b> :CtrlPBuffer<CR>
 " edit current vimrc
 map <Leader>? :e ~/.vimrc<CR>
 map <Leader>/ :so $MYVIMRC<CR>
+
+" other
+nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
+cmap w!! w !sudo tee > /dev/null %
