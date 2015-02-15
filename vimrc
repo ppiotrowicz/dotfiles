@@ -66,6 +66,11 @@ set directory=~/.vim/swaps    " and swaps here
 set backspace=2           " backspace for normal human beings
 set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
 set autoread              " If a file is changed outside of vim, automatically reload it without asking
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬,trail:·
+autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+highlight EOLWS ctermbg=red guibg=red
 
 " associate *.todo with todo filetype
 au BufRead,BufNewFile *.todo set filetype=todo
