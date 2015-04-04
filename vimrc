@@ -23,9 +23,8 @@ Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
-Plugin 'mattn/emmet-vim'
 Plugin 'ervandew/supertab'
-Plugin 'Raimondi/delimitMate'
+Plugin 'elzr/vim-json'
 call vundle#end()
 filetype plugin indent on
 
@@ -50,7 +49,7 @@ set clipboard=unnamed			" system clipboard to * register
 set tabstop=2             " tab == 2 spaces
 set shiftwidth=2          " << and >> use 2 spaces
 set expandtab             " change tabs to spaces
-set mouse=a               " use mouse in console vim
+set mouse=                " use mouse in console vim
 set scrolloff=3           " always show at least 3 lines at the top and bottom while scrolling
 set hidden                " Handle multiple buffers better.
 set wildmenu              " Enhanced command line completion.
@@ -135,7 +134,7 @@ filetype plugin on
 let g:OmniSharp_host = "http://localhost:2000"
 
 "Set the type lookup function to use the preview window instead of the status line
-"let g:OmniSharp_typeLookupInPreview = 1
+let g:OmniSharp_typeLookupInPreview = 0
 
 "Timeout in seconds to wait for a response from the server
 let g:OmniSharp_timeout = 1
@@ -178,6 +177,8 @@ augroup omnisharp_commands
     "autocmd FileType cs nnoremap <C-]> :OmniSharpNavigateDown<cr>
     autocmd FileType cs nnoremap <leader>rt :OmniSharpRunTestFixture<cr>
     autocmd FileType cs nnoremap <leader>ra :OmniSharpRunAllTests<cr>
+    autocmd FileType cs nnoremap <leader>rr :OmniSharpRunLastTests<cr>
+    autocmd FileType cs nnoremap <leader>ru :OmniSharpRunTests<cr>
     autocmd FileType cs nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
     autocmd FileType cs vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
 
@@ -205,6 +206,14 @@ augroup END
 set updatetime=500
 " Remove 'Press Enter to continue' message when type information is longer than one line.
 "set cmdheight=2
+
+" -----------------------------------------------------------------------------
+" ACK / AG
+" -----------------------------------------------------------------------------
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+" -----------------------------------------------------------------------------
 
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
