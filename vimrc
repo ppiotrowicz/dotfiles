@@ -25,6 +25,7 @@ Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'godlygeek/tabular'
 call vundle#end()
 filetype plugin indent on
 
