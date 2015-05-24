@@ -26,6 +26,10 @@ Plugin 'ervandew/supertab'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'rizzatti/dash.vim'
+Plugin 'vim-ruby/vim-ruby'
 call vundle#end()
 filetype plugin indent on
 
@@ -41,29 +45,41 @@ colorscheme gruvbox       " use gruvbox theme
 "  SETTINGS
 " -----------------------------------------------------------------------------
 syntax enable
-set number					      " show line numbers
-set clipboard=unnamed			" system clipboard to * register
-set tabstop=2             " tab == 2 spaces
-set shiftwidth=2          " << and >> use 2 spaces
-set expandtab             " change tabs to spaces
-set mouse=                " use mouse in console vim
-set scrolloff=3           " always show at least 3 lines at the top and bottom while scrolling
-set hidden                " Handle multiple buffers better.
-set wildmenu              " Enhanced command line completion.
-set wildmode=list:longest " Complete files like a shell.
-set ignorecase            " Case-insensitive searching.
-set smartcase             " But case-sensitive if expression contains a capital letter.
-set incsearch             " Highlight matches as you type.
-set hlsearch              " Highlight matches.
-set nobackup              " Don't make a backup before overwriting a file.
-set nowritebackup         " And again.
+set number                    " show line numbers
+set relativenumber            " shows line numbers relative to current line
+set clipboard=unnamed         " system clipboard to * register
+set tabstop=2                 " tab == 2 spaces
+set shiftwidth=2              " << and >> use 2 spaces
+set expandtab                 " change tabs to spaces
+set mouse=                    " don't use mouse in console vim
+set scrolloff=5               " always show at least 3 lines at the top and bottom while scrolling
+set hidden                    " Handle multiple buffers better.
+set wildmenu                  " Enhanced command line completion.
+set wildmode=list:longest     " Complete files like a shell.
+set ignorecase                " Case-insensitive searching.
+set smartcase                 " But case-sensitive if expression contains a capital letter.
+set incsearch                 " Highlight matches as you type.
+set hlsearch                  " Highlight matches.
+set nobackup                  " Don't make a backup before overwriting a file.
+set nowritebackup             " And again.
 set backupdir=~/.vim/backups  " save backups here
 set directory=~/.vim/swaps    " and swaps here
-set backspace=2           " backspace for normal human beings
+set backspace=2               " backspace for normal human beings
+set autoread                  " If a file is changed outside of vim, automatically reload it without asking
 set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
-set autoread              " If a file is changed outside of vim, automatically reload it without asking
 
-" whitespace 
+" -----------------------------------------------------------------------------
+"  window size
+" -----------------------------------------------------------------------------
+set winwidth=84
+set winheight=5
+set winminheight=5
+set winheight=999
+set nowrap
+
+" -----------------------------------------------------------------------------
+"  WHITESPACE
+" -----------------------------------------------------------------------------
 set listchars=tab:▸\ ,eol:¬,trail:·
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
@@ -72,11 +88,11 @@ highlight EOLWS ctermbg=red guibg=red
 " -----------------------------------------------------------------------------
 " AIRLINE
 " -----------------------------------------------------------------------------
-let g:airline#extensions#tabline#enabled = 1    " smarter tabline (shows buffers when there's only one tab open)
-let g:airline_powerline_fonts = 1               " use fonts from patched powerline fonts
-set laststatus=2                                " always show status bar
-set showtabline=2       " Always display the tabline, even if there is only one tab
-set noshowmode          " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+let g:airline#extensions#tabline#enabled = 1 " smarter tabline (shows buffers when there's only one tab open)
+let g:airline_powerline_fonts = 1            " use fonts from patched powerline fonts
+set laststatus=2                             " always show status bar
+set showtabline=2                            " Always display the tabline, even if there is only one tab
+set noshowmode                               " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 
 " -----------------------------------------------------------------------------
 " GIT GUTTER
@@ -105,9 +121,9 @@ let g:syntastic_style_warning_symbol = "⚠"
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>', '<Enter>']
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>'] ", '<Enter>'
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_key_invoke_completion = '<leader><Space>'
+"let g:ycm_key_invoke_completion = '<leader><Space>'
 
 " -----------------------------------------------------------------------------
 " UNITE
@@ -140,7 +156,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " -----------------------------------------------------------------------------
 " OMNISHARP
 " -----------------------------------------------------------------------------
-" OmniSharp won't work without this setting
 filetype plugin on
 
 let g:OmniSharp_host = "http://localhost:2000"
@@ -208,6 +223,8 @@ augroup omnisharp_commands
     " Add syntax highlighting for types and interfaces
     " autocmd FileType cs nnoremap <leader>th :OmniSharpHighlightTypes<cr>
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
+
+    autocmd FileType cs let &colorcolumn="120"
 augroup END
 
 " this setting controls how long to wait (in ms) before fetching type / symbol information.
@@ -239,6 +256,9 @@ endfunction
 " -----------------------------------------------------------------------------
 let mapleader = ","
 
+" turn off search highlight
+nnoremap <space>h :noh<CR>
+
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -251,7 +271,8 @@ nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 nmap _= :call Preserve("normal gg=G")<CR>
 
 " Toggle NERDTree
-map <C-n> :NERDTreeToggle<CR>
+map <c-n> :NERDTreeToggle<CR>
+map <c-f> :NERDTreeFind<CR>
 
 " edit current vimrc
 map <Leader>? :e ~/.vimrc<CR>
@@ -260,3 +281,6 @@ map <Leader>/ :so $MYVIMRC<CR>
 " other
 nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
 cmap w!! w !sudo tee > /dev/null %
+
+" reformat json
+autocmd FileType json nnoremap <space>= :%!python -m json.tool<CR>
