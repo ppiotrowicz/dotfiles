@@ -1,6 +1,7 @@
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
+
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'shougo/unite.vim'
@@ -30,16 +31,24 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'rizzatti/dash.vim'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'chriskempson/vim-tomorrow-theme'
 call vundle#end()
+
 filetype plugin indent on
 
 " -----------------------------------------------------------------------------
 "  THEME
 " -----------------------------------------------------------------------------
 let &t_Co=256             " use 256 colors
-set background=dark       " use dark background
-let g:gruvbox_sign_column = 'dark0'
-colorscheme gruvbox       " use gruvbox theme
+
+" DARK THEME
+"set background=dark       " use dark background
+"let g:gruvbox_sign_column = 'dark0'
+"colorscheme gruvbox       " use gruvbox theme
+
+" LIGHT THEME
+colorscheme Tomorrow       " use Tomorrow theme
+set background=light       " use light background
 
 " -----------------------------------------------------------------------------
 "  SETTINGS
@@ -67,14 +76,8 @@ set directory=~/.vim/swaps    " and swaps here
 set backspace=2               " backspace for normal human beings
 set autoread                  " If a file is changed outside of vim, automatically reload it without asking
 set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
-
-" -----------------------------------------------------------------------------
-"  window size
-" -----------------------------------------------------------------------------
-set winwidth=84
-set winheight=5
-set winminheight=5
-set winheight=999
+set splitbelow                " open horizontal split below current window
+set splitright                " open vertical split to the right of the current window
 set nowrap
 
 " -----------------------------------------------------------------------------
@@ -84,6 +87,11 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS ctermbg=red guibg=red
+
+" -----------------------------------------------------------------------------
+"  NERDTREE
+" -----------------------------------------------------------------------------
+let g:NERDTreeWinSize=40
 
 " -----------------------------------------------------------------------------
 " AIRLINE
@@ -97,7 +105,7 @@ set noshowmode                               " Hide the default mode text (e.g. 
 " -----------------------------------------------------------------------------
 " GIT GUTTER
 " -----------------------------------------------------------------------------
-let g:gitgutter_sign_column_always = 1		" always show git gutter
+let g:gitgutter_sign_column_always = 1		   " always show git gutter
 highlight clear SignColumn
 
 " -----------------------------------------------------------------------------
@@ -168,13 +176,7 @@ let g:OmniSharp_timeout = 1
 
 set noshowmatch
 
-"don't autoselect first item in omnicomplete, show if only one item (for preview)
-"remove preview if you don't want to see any documentation whatsoever.
 set completeopt=longest,menuone
-
-"Move the preview window (code documentation) to the bottom of the screen, so it doesn't move the code!
-"You might also want to look at the echodoc plugin
-set splitbelow
 
 " Get Code Issues and syntax errors
 let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
@@ -182,11 +184,8 @@ let g:syntastic_cs_checkers = ['syntax', 'semantic', 'issues']
 augroup omnisharp_commands
     autocmd!
     autocmd FileType cs nnoremap <leader>b :wa!<cr>:OmniSharpBuildAsync<cr>
-    "autocmd BufEnter,TextChanged,InsertLeave *.cs SyntasticCheck
-    "autocmd BufWritePost *.cs call OmniSharp#AddToProject()
     autocmd CursorHold *.cs call OmniSharp#TypeLookupWithoutDocumentation()
 
-    "The following commands are contextual, based on the current cursor position.
     autocmd FileType cs nnoremap gd :OmniSharpGotoDefinition<cr>
     autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
     autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
@@ -203,34 +202,16 @@ augroup omnisharp_commands
     autocmd FileType cs nnoremap <leader>rr :OmniSharpRunLastTests<cr>
     autocmd FileType cs nnoremap <leader>ru :OmniSharpRunTests<cr>
     "autocmd FileType cs nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
-    "autocmd FileType cs vnoremap <leader><space> :call OmniSharp#GetCodeActions('visual')<cr>
-
-    " rename with dialog
     autocmd FileType cs nnoremap <leader>nm :OmniSharpRename<cr>
-    " rename without dialog - with cursor on the symbol to rename... ':Rename newname'
-    command! -nargs=1 Rename :call OmniSharp#RenameTo("<args>")
-
-    " Force OmniSharp to reload the solution. Useful when switching branches etc.
-    " autocmd FileType cs nnoremap <leader>rl :OmniSharpReloadSolution<cr>
-    " autocmd FileType cs nnoremap <leader>cf :OmniSharpCodeFormat<cr>
-    " Load the current .cs file to the nearest project
-    " autocmd FileType cs nnoremap <leader>tp :OmniSharpAddToProject<cr>
-
-    " (Experimental - uses vim-dispatch or vimproc plugin) - Start the omnisharp server for the current solution
+    autocmd FileType cs nnoremap <leader>tp :OmniSharpAddToProject<cr>
     autocmd FileType cs nnoremap <leader>ss :OmniSharpStartServer<cr>
     autocmd FileType cs nnoremap <leader>sp :OmniSharpStopServer<cr>
 
-    " Add syntax highlighting for types and interfaces
-    " autocmd FileType cs nnoremap <leader>th :OmniSharpHighlightTypes<cr>
     autocmd FileType cs setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
-
     autocmd FileType cs let &colorcolumn="120"
 augroup END
 
-" this setting controls how long to wait (in ms) before fetching type / symbol information.
-set updatetime=500
-" Remove 'Press Enter to continue' message when type information is longer than one line.
-"set cmdheight=2
+set updatetime=500 " ms
 
 " -----------------------------------------------------------------------------
 " ACK / AG
@@ -254,7 +235,7 @@ endfunction
 " -----------------------------------------------------------------------------
 " KEYBOARD
 " -----------------------------------------------------------------------------
-let mapleader = ","
+let mapleader = "\<space>"
 
 " turn off search highlight
 nnoremap <space>h :noh<CR>
@@ -276,11 +257,26 @@ map <c-f> :NERDTreeFind<CR>
 
 " edit current vimrc
 map <Leader>? :e ~/.vimrc<CR>
+" reload vimrc
 map <Leader>/ :so $MYVIMRC<CR>
 
-" other
+" delete current file
 nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
+
+" save
+nnoremap <Leader>w :w<CR>
+
+" save as root
 cmap w!! w !sudo tee > /dev/null %
 
 " reformat json
-autocmd FileType json nnoremap <space>= :%!python -m json.tool<CR>
+autocmd FileType json nnoremap <Leader>= :%!python -m json.tool<CR>
+
+" rebalance windows on terminal resize
+autocmd VimResized * :wincmd =
+
+" zoom current window
+nnoremap <space>- :wincmd _<cr>:wincmd \|<cr>
+" rebalance windows
+nnoremap <space>= :wincmd =<cr>
+
