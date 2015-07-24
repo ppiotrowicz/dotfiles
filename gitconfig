@@ -8,6 +8,14 @@
   ign = ls-files -o -i --exclude-standard
   co = checkout
   ci = commit
+  cherry-pick = cherry-pick -x
+  l = log --graph --date=short
+  changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
+  short = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\"
+  changelog = log --pretty=format:\" * %s\"
+  wip = commit -a -m "WIP"
+  unstage = reset HEAD
+  uncommit = reset --soft HEAD^
 [color]
   diff = auto
   status = auto
@@ -23,3 +31,9 @@
   pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [push]
 	default = current
+[gc]
+  auto = 1
+[merge]
+  summary = 1
+[rebase]
+	autosquash = true

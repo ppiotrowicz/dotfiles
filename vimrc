@@ -18,20 +18,25 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'mileszs/ack.vim'
-Plugin 'danro/rename.vim'
 Plugin 'OrangeT/vim-csharp'
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'elzr/vim-json'
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
 Plugin 'godlygeek/tabular'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'rizzatti/dash.vim'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-endwise'
 Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'tpope/vim-eunuch'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
+Plugin 'thoughtbot/vim-rspec'
 call vundle#end()
 
 filetype plugin indent on
@@ -42,13 +47,13 @@ filetype plugin indent on
 let &t_Co=256             " use 256 colors
 
 " DARK THEME
-"set background=dark       " use dark background
-"let g:gruvbox_sign_column = 'dark0'
-"colorscheme gruvbox       " use gruvbox theme
+set background=dark       " use dark background
+let g:gruvbox_sign_column = 'dark0'
+colorscheme gruvbox       " use gruvbox theme
 
 " LIGHT THEME
-colorscheme Tomorrow       " use Tomorrow theme
-set background=light       " use light background
+"colorscheme Tomorrow       " use Tomorrow theme
+"set background=light       " use light background
 
 " -----------------------------------------------------------------------------
 "  SETTINGS
@@ -80,6 +85,7 @@ set splitbelow                " open horizontal split below current window
 set splitright                " open vertical split to the right of the current window
 set nowrap
 
+let mapleader = "\<space>"
 " -----------------------------------------------------------------------------
 "  WHITESPACE
 " -----------------------------------------------------------------------------
@@ -132,6 +138,9 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>'] ", '<Enter>'
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 "let g:ycm_key_invoke_completion = '<leader><Space>'
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'ruby': 1
+      \}
 
 " -----------------------------------------------------------------------------
 " UNITE
@@ -146,12 +155,12 @@ let g:unite_split_rule = 'botright'
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
 
-nnoremap <space>p :<C-U>Unite -auto-resize -buffer-name=file file_rec/async:!<cr>
-nnoremap <space>b :<C-u>Unite -auto-resize -buffer-name=buffer buffer<cr>
-nnoremap <space>y :<C-u>Unite -auto-resize -buffer-name=yank history/yank<cr>
-nnoremap <space>t :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
-nnoremap <space>s :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
-nnoremap <space>/ :<C-u>Unite grep:.<cr>
+nnoremap <leader>p :<C-U>Unite -auto-resize -buffer-name=file file_rec/async:!<cr>
+nnoremap <leader>o :<C-u>Unite -auto-resize -buffer-name=buffer buffer<cr>
+nnoremap <leader>y :<C-u>Unite -auto-resize -buffer-name=yank history/yank<cr>
+nnoremap <leader>f :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
+nnoremap <leader>s :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
+nnoremap <leader>/ :<C-u>Unite grep:.<cr>
 
 " -----------------------------------------------------------------------------
 " ULTISNIPS
@@ -192,7 +201,7 @@ augroup omnisharp_commands
     autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
     autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
     autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
-    autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
+    "autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
     autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
     autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
     autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
@@ -235,10 +244,11 @@ endfunction
 " -----------------------------------------------------------------------------
 " KEYBOARD
 " -----------------------------------------------------------------------------
-let mapleader = "\<space>"
 
 " turn off search highlight
-nnoremap <space>h :noh<CR>
+nnoremap <leader>h :noh<CR>
+
+nnoremap Y y$
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -256,27 +266,49 @@ map <c-n> :NERDTreeToggle<CR>
 map <c-f> :NERDTreeFind<CR>
 
 " edit current vimrc
-map <Leader>? :e ~/.vimrc<CR>
+map <leader>? :e ~/.vimrc<CR>
 " reload vimrc
-map <Leader>/ :so $MYVIMRC<CR>
+map <leader>/ :so $MYVIMRC<CR>
 
 " delete current file
 nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
 
 " save
-nnoremap <Leader>w :w<CR>
+nnoremap <leader>w :w<CR>
+
+" show quickfix window
+nnoremap <leader>q :cl<cr>
 
 " save as root
 cmap w!! w !sudo tee > /dev/null %
 
+" close current buffer
+nnoremap <leader>x :bd<cr>
+
 " reformat json
-autocmd FileType json nnoremap <Leader>= :%!python -m json.tool<CR>
+autocmd FileType json nnoremap <leader>= :%!python -m json.tool<CR>
 
 " rebalance windows on terminal resize
 autocmd VimResized * :wincmd =
 
 " zoom current window
-nnoremap <space>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 " rebalance windows
-nnoremap <space>= :wincmd =<cr>
+nnoremap <leader>= :wincmd =<cr>
 
+" RSpec.vim mappings
+let g:rspec_command = "Dispatch bundle exec rspec {spec}"
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'c'    : '#H',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '#W %R',
+      \'z'    : '#H'}
