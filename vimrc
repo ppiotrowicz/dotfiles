@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'shougo/unite.vim'
+Plugin 'tsukkee/unite-tag'
 Plugin 'shougo/neomru.vim'
 Plugin 'shougo/vimproc.vim'
 Plugin 'morhetz/gruvbox'
@@ -37,6 +38,8 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 call vundle#end()
 
 filetype plugin indent on
@@ -52,8 +55,8 @@ let g:gruvbox_sign_column = 'dark0'
 colorscheme gruvbox       " use gruvbox theme
 
 " LIGHT THEME
-"colorscheme Tomorrow       " use Tomorrow theme
-"set background=light       " use light background
+" colorscheme Tomorrow       " use Tomorrow theme
+" set background=light       " use light background
 
 " -----------------------------------------------------------------------------
 "  SETTINGS
