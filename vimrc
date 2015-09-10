@@ -4,42 +4,57 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-bundler'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'sirver/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'kchmck/vim-coffee-script'
+
+" navigation
 Plugin 'scrooloose/nerdtree'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'mileszs/ack.vim'
-Plugin 'OrangeT/vim-csharp'
-Plugin 'OmniSharp/omnisharp-vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'tsukkee/unite-tag'
+
+" general
+Plugin 'Shougo/vimproc.vim'
+Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-dispatch'
-Plugin 'bling/vim-airline'
-Plugin 'ervandew/supertab'
-Plugin 'elzr/vim-json'
-Plugin 'godlygeek/tabular'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-endwise'
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'edkolev/tmuxline.vim'
 Plugin 'tpope/vim-eunuch'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-endwise'
+Plugin 'mileszs/ack.vim'
+Plugin 'ervandew/supertab'
+Plugin 'godlygeek/tabular'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'sirver/ultisnips'
+Plugin 'honza/vim-snippets'
+
+" git
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+
+" themes
+Plugin 'morhetz/gruvbox'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'bling/vim-airline'
+Plugin 'edkolev/tmuxline.vim'
+
+" ruby
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-bundler'
 Plugin 'thoughtbot/vim-rspec'
-Plugin 'kana/vim-textobj-user'
-Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'tmhedberg/matchit'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'tsukkee/unite-tag'
+
+" c#
+Plugin 'OrangeT/vim-csharp'
+Plugin 'OmniSharp/omnisharp-vim'
+
+" elixir
+Plugin 'elixir-lang/vim-elixir'
+
+" coffeescript
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mustache/vim-mustache-handlebars'
+
+" json
+Plugin 'elzr/vim-json'
 call vundle#end()
 
 filetype plugin indent on
@@ -138,9 +153,8 @@ let g:syntastic_style_warning_symbol = "⚠"
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>'] ", '<Enter>'
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-"let g:ycm_key_invoke_completion = '<leader><Space>'
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'ruby': 1
       \}
@@ -157,23 +171,21 @@ let g:unite_prompt='» '
 let g:unite_split_rule = 'botright'
 let g:unite_source_rec_max_cache_files=5000
 let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts =
+  \ '-i --vimgrep --hidden --ignore ' .
+  \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
-nnoremap <leader>p :<C-U>Unite -auto-resize -buffer-name=file file_rec/async:!<cr>
-nnoremap <leader>o :<C-u>Unite -auto-resize -buffer-name=buffer buffer<cr>
-" nnoremap <leader>y :<C-u>Unite -auto-resize -buffer-name=yank history/yank<cr>
-" nnoremap <leader>f :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
-" nnoremap <leader>s :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
-" nnoremap <leader>/ :<C-u>Unite grep:.<cr>
+nnoremap <leader>p :Unite -auto-resize -buffer-name=file file_rec/async:!<cr>
+nnoremap <leader>o :Unite -auto-resize -buffer-name=buffer buffer<cr>
+nnoremap <leader>/ :Unite grep:.<cr>
 
-" -----------------------------------------------------------------------------
-" FAST UNITE
-" -----------------------------------------------------------------------------
-" let g:fastunite_default_options = {
-"     \ 'direction' : 'botright'
-"     \ }
+autocmd FileType cs nnoremap <leader>f :Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
+autocmd FileType cs nnoremap <leader>s :Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
 
-" map <Leader>p [unite]p
-" map <Leader>o [unite]b
 " -----------------------------------------------------------------------------
 " ULTISNIPS
 " -----------------------------------------------------------------------------
@@ -280,7 +292,7 @@ map <c-f> :NERDTreeFind<CR>
 " edit current vimrc
 map <leader>? :e ~/.vimrc<CR>
 " reload vimrc
-map <leader>/ :so $MYVIMRC<CR>
+" map <leader>/ :so $MYVIMRC<CR>
 
 " delete current file
 nnoremap <leader>rm :call delete(expand('%')) \| bdelete!<CR>
@@ -314,9 +326,6 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-
-" simple vim todo
-let g:simple_todo_map_keys = 0
 
 let g:tmuxline_preset = {
       \'a'    : '#S',
