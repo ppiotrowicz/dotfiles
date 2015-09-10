@@ -4,13 +4,10 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
-Plugin 'shougo/unite.vim'
-Plugin 'tsukkee/unite-tag'
-Plugin 'shougo/neomru.vim'
-Plugin 'shougo/vimproc.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-bundler'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'sirver/ultisnips'
@@ -40,6 +37,14 @@ Plugin 'tpope/vim-commentary'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'tmhedberg/matchit'
+Plugin 'Shougo/vimproc.vim', { 'do': 'make' }
+Plugin 'Shougo/unite.vim'
+"Plugin 'rstacruz/vim-fastunite'
+Plugin 'Shougo/neomru.vim'
+Plugin 'Shougo/unite-outline'
+Plugin 'tsukkee/unite-tag'
+Plugin 'vitalk/vim-simple-todo'
 call vundle#end()
 
 filetype plugin indent on
@@ -160,11 +165,20 @@ let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ig
 
 nnoremap <leader>p :<C-U>Unite -auto-resize -buffer-name=file file_rec/async:!<cr>
 nnoremap <leader>o :<C-u>Unite -auto-resize -buffer-name=buffer buffer<cr>
-nnoremap <leader>y :<C-u>Unite -auto-resize -buffer-name=yank history/yank<cr>
-nnoremap <leader>f :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
-nnoremap <leader>s :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
-nnoremap <leader>/ :<C-u>Unite grep:.<cr>
+" nnoremap <leader>y :<C-u>Unite -auto-resize -buffer-name=yank history/yank<cr>
+" nnoremap <leader>f :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
+" nnoremap <leader>s :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
+" nnoremap <leader>/ :<C-u>Unite grep:.<cr>
 
+" -----------------------------------------------------------------------------
+" FAST UNITE
+" -----------------------------------------------------------------------------
+" let g:fastunite_default_options = {
+"     \ 'direction' : 'botright'
+"     \ }
+
+" map <Leader>p [unite]p
+" map <Leader>o [unite]b
 " -----------------------------------------------------------------------------
 " ULTISNIPS
 " -----------------------------------------------------------------------------
@@ -305,6 +319,9 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+" simple vim todo
+let g:simple_todo_map_keys = 0
 
 let g:tmuxline_preset = {
       \'a'    : '#S',

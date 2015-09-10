@@ -16,6 +16,7 @@
   wip = commit -a -m "WIP"
   unstage = reset HEAD
   uncommit = reset --soft HEAD^
+  ctags = !.git/hooks/ctags
 [color]
   diff = auto
   status = auto
@@ -37,3 +38,5 @@
   summary = 1
 [rebase]
 	autosquash = true
+[init]
+  templatedir = ~/.git_template
