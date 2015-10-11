@@ -1,3 +1,4 @@
+" Plugins {{{
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -58,9 +59,8 @@ call vundle#end()
 
 filetype plugin indent on
 
-" -----------------------------------------------------------------------------
-"  THEME
-" -----------------------------------------------------------------------------
+" }}}
+" Theme {{{
 let &t_Co=256             " use 256 colors
 
 " DARK THEME
@@ -71,10 +71,8 @@ colorscheme gruvbox       " use gruvbox theme
 " LIGHT THEME
 " colorscheme Tomorrow       " use Tomorrow theme
 " set background=light       " use light background
-
-" -----------------------------------------------------------------------------
-"  SETTINGS
-" -----------------------------------------------------------------------------
+" }}}
+" Settings {{{
 syntax enable
 set number                    " show line numbers
 set relativenumber            " shows line numbers relative to current line
@@ -105,38 +103,28 @@ set lazyredraw                " redraw only when we need to.
 set showmatch                 " highlight matching [{()}]
 
 let mapleader = "\<space>"
-
-" -----------------------------------------------------------------------------
-"  WHITESPACE
-" -----------------------------------------------------------------------------
+" }}}
+" Whitespace {{{
 set listchars=tab:▸\ ,eol:¬,trail:·
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS ctermbg=red guibg=red
-
-" -----------------------------------------------------------------------------
-"  NERDTREE
-" -----------------------------------------------------------------------------
+" }}}
+" NERDTree {{{
 let g:NERDTreeWinSize=40
-
-" -----------------------------------------------------------------------------
-" AIRLINE
-" -----------------------------------------------------------------------------
+" }}}
+" Airline {{{
 let g:airline#extensions#tabline#enabled = 1 " smarter tabline (shows buffers when there's only one tab open)
 let g:airline_powerline_fonts = 1            " use fonts from patched powerline fonts
 set laststatus=2                             " always show status bar
 set showtabline=2                            " Always display the tabline, even if there is only one tab
 set noshowmode                               " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-
-" -----------------------------------------------------------------------------
-" GIT GUTTER
-" -----------------------------------------------------------------------------
+" }}}
+" Git gutter {{{
 let g:gitgutter_sign_column_always = 1		   " always show git gutter
 highlight clear SignColumn
-
-" -----------------------------------------------------------------------------
-" SYNTASTIC
-" -----------------------------------------------------------------------------
+" }}}
+" Syntastic {{{
 let g:syntastic_enable_signs=1
 let g:syntastic_mode_map={ 'mode': 'active',
 \ 'active_filetypes': [],
@@ -148,10 +136,8 @@ let g:syntastic_error_symbol = "✗"
 let g:syntastic_warning_symbol = "⚠"
 let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_style_warning_symbol = "⚠"
-
-" -----------------------------------------------------------------------------
-" YouCompleteMe
-" -----------------------------------------------------------------------------
+" }}}
+" YouCompleteMe {{{
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
@@ -160,10 +146,8 @@ let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_filetype_specific_completion_to_disable = {
       \ 'ruby': 1
       \}
-
-" -----------------------------------------------------------------------------
-" UNITE
-" -----------------------------------------------------------------------------
+" }}}
+" Unite {{{
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 let g:unite_source_history_yank_enable = 1
@@ -183,22 +167,17 @@ endif
 
 nnoremap <leader>p :Unite -auto-resize -buffer-name=file file_rec/async:!<cr>
 nnoremap <leader>o :Unite -auto-resize -buffer-name=buffer buffer<cr>
-nnoremap <leader>/ :Unite grep:.<cr>
 
 autocmd FileType cs nnoremap <leader>f :Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
 autocmd FileType cs nnoremap <leader>s :Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
-
-" -----------------------------------------------------------------------------
-" ULTISNIPS
-" -----------------------------------------------------------------------------
+" }}}
+" Ultisnips {{{
 let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" -----------------------------------------------------------------------------
-" OMNISHARP
-" -----------------------------------------------------------------------------
+" }}}
+" OmniSharp {{{
 filetype plugin on
 
 let g:OmniSharp_host = "http://localhost:2000"
@@ -208,7 +187,6 @@ let g:OmniSharp_typeLookupInPreview = 0
 
 "Timeout in seconds to wait for a response from the server
 let g:OmniSharp_timeout = 1
-
 
 set completeopt=longest,menuone
 
@@ -246,15 +224,24 @@ augroup omnisharp_commands
 augroup END
 
 set updatetime=500 " ms
-
-" -----------------------------------------------------------------------------
-" ACK / AG
-" -----------------------------------------------------------------------------
+" }}}
+" Ack {{{
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-" -----------------------------------------------------------------------------
-
+" }}}
+" tmuxline {{{
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'b'    : '#W',
+      \'c'    : '#H',
+      \'win'  : '#I #W',
+      \'cwin' : '#I #W',
+      \'x'    : '%a',
+      \'y'    : '#W %R',
+      \'z'    : '#H'}
+" }}}
+" Functions {{{
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
   let _s=@/
@@ -266,13 +253,13 @@ function! Preserve(command)
   let @/=_s
   call cursor(l, c)
 endfunction
-" -----------------------------------------------------------------------------
-" KEYBOARD
-" -----------------------------------------------------------------------------
+" }}}
+" Keyboard {{{
 
 " turn off search highlight
 nnoremap <leader>h :noh<CR>
 
+" fix inconsistencies
 nnoremap Y y$
 
 " Move around splits with <c-hjkl>
@@ -281,8 +268,9 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" Whitespace
+" Fix whitespace
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+
 " Format file
 nmap _= :call Preserve("normal gg=G")<CR>
 
@@ -321,6 +309,7 @@ nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 " rebalance windows
 nnoremap <leader>= :wincmd =<cr>
 
+" Find word under cursor
 nnoremap <leader>* :Ack <c-r><c-w><CR>
 
 " RSpec.vim mappings
@@ -329,13 +318,6 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+" }}}
 
-let g:tmuxline_preset = {
-      \'a'    : '#S',
-      \'b'    : '#W',
-      \'c'    : '#H',
-      \'win'  : '#I #W',
-      \'cwin' : '#I #W',
-      \'x'    : '%a',
-      \'y'    : '#W %R',
-      \'z'    : '#H'}
+" vim:foldmethod=marker:foldlevel=0
