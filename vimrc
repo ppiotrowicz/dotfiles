@@ -30,7 +30,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
-
 " themes
 Plugin 'morhetz/gruvbox'
 Plugin 'chriskempson/vim-tomorrow-theme'
@@ -101,9 +100,12 @@ set autoread                  " If a file is changed outside of vim, automatical
 set timeout timeoutlen=1000 ttimeoutlen=100 " fix slow O inserts
 set splitbelow                " open horizontal split below current window
 set splitright                " open vertical split to the right of the current window
-set nowrap
+set nowrap                    " do not wrap stuff
+set lazyredraw                " redraw only when we need to.
+set showmatch                 " highlight matching [{()}]
 
 let mapleader = "\<space>"
+
 " -----------------------------------------------------------------------------
 "  WHITESPACE
 " -----------------------------------------------------------------------------
@@ -207,7 +209,6 @@ let g:OmniSharp_typeLookupInPreview = 0
 "Timeout in seconds to wait for a response from the server
 let g:OmniSharp_timeout = 1
 
-set noshowmatch
 
 set completeopt=longest,menuone
 
@@ -319,6 +320,8 @@ autocmd VimResized * :wincmd =
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 " rebalance windows
 nnoremap <leader>= :wincmd =<cr>
+
+nnoremap <leader>* :Ack <c-r><c-w><CR>
 
 " RSpec.vim mappings
 let g:rspec_command = "Dispatch bundle exec rspec {spec}"
