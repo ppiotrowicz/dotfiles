@@ -100,7 +100,7 @@ set splitbelow                " open horizontal split below current window
 set splitright                " open vertical split to the right of the current window
 set nowrap                    " do not wrap stuff
 set lazyredraw                " redraw only when we need to.
-set showmatch                 " highlight matching [{()}]
+"set showmatch                 " highlight matching [{()}]
 
 let mapleader = "\<space>"
 " }}}
@@ -150,26 +150,25 @@ let g:ycm_filetype_specific_completion_to_disable = {
 " Unite {{{
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
-let g:unite_source_history_yank_enable = 1
+" let g:unite_source_history_yank_enable = 1
 let g:unite_data_directory='~/.vim/.cache/unite'
 let g:unite_enable_start_insert=1
 let g:unite_prompt='» '
 let g:unite_split_rule = 'botright'
 let g:unite_source_rec_max_cache_files=5000
-let g:unite_source_rec_async_command='ag --nocolor --nogroup --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr" --hidden -g ""'
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-  \ '-i --vimgrep --hidden --ignore ' .
-  \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-  let g:unite_source_grep_recursive_opt = ''
-endif
+let g:unite_source_rec_async_command =
+    \ ['ag', '--follow', '--nocolor', '--ignore', 'build', '--ignore', '".hg"', '--ignore', '".svn"', '--ignore', '".git"', '--ignore', '".bzr"', '--ignore', '"packages"', '--nogroup', '--hidden', '-g', '']
+let g:unite_source_grep_command = 'ag'
+let g:unite_source_grep_default_opts =
+      \ '-i --vimgrep --hidden --ignore ' .
+      \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+let g:unite_source_grep_recursive_opt = ''
 
-nnoremap <leader>p :Unite -auto-resize -buffer-name=file file_rec/async:!<cr>
-nnoremap <leader>o :Unite -auto-resize -buffer-name=buffer buffer<cr>
+nnoremap <leader>p :<C-u>Unite -auto-resize -buffer-name=file file_rec/async:!<cr>
+nnoremap <leader>o :<C-u>Unite -auto-resize -buffer-name=buffer buffer<cr>
 
-autocmd FileType cs nnoremap <leader>f :Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
-autocmd FileType cs nnoremap <leader>s :Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
+autocmd FileType cs nnoremap <leader>f :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findtype<cr>
+autocmd FileType cs nnoremap <leader>s :<C-u>Unite -auto-resize -buffer-name=outline -start-insert OmniSharp/findsymbols<cr>
 " }}}
 " Ultisnips {{{
 let g:SuperTabDefaultCompletionType = '<C-n>'
