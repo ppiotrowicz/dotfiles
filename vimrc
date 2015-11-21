@@ -234,17 +234,6 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 " }}}
-" tmuxline {{{
-" let g:tmuxline_preset = {
-"       \'a'    : '#S',
-"       \'b'    : '#W',
-"       \'c'    : '#H',
-"       \'win'  : '#I #W',
-"       \'cwin' : '#I #W',
-"       \'x'    : '%a',
-"       \'y'    : '#W %R',
-"       \'z'    : '#H'}
-" }}}
 " Functions {{{
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
