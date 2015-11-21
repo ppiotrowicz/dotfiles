@@ -1,64 +1,61 @@
 " Plugins {{{
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
 
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+call plug#begin()
 
 " navigation
-Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/unite.vim'
-Plugin 'tsukkee/unite-tag'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Shougo/unite.vim'
+Plug 'tsukkee/unite-tag'
 
 " general
-Plugin 'Shougo/vimproc.vim'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-endwise'
-Plugin 'mileszs/ack.vim'
-Plugin 'ervandew/supertab'
-Plugin 'godlygeek/tabular'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'sirver/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'junegunn/goyo.vim'
-Plugin 'radenling/vim-dispatch-neovim'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-endwise'
+Plug 'mileszs/ack.vim'
+Plug 'ervandew/supertab'
+Plug 'godlygeek/tabular'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --omnisharp-completer' }
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'junegunn/goyo.vim'
+Plug 'radenling/vim-dispatch-neovim'
 
 " git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " themes
-Plugin 'morhetz/gruvbox'
-Plugin 'chriskempson/vim-tomorrow-theme'
-Plugin 'bling/vim-airline'
-" Plugin 'edkolev/tmuxline.vim'
+Plug 'morhetz/gruvbox'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'bling/vim-airline'
 
 " ruby
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-bundler'
-Plugin 'thoughtbot/vim-rspec'
-Plugin 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'tpope/vim-bundler', { 'for': 'ruby' }
+Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 
 " c#
-Plugin 'OrangeT/vim-csharp'
-Plugin 'OmniSharp/omnisharp-vim'
+Plug 'OrangeT/vim-csharp', { 'for': 'cs' }
+Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': 'cd server && xbuild' }
 
 " elixir
-Plugin 'elixir-lang/vim-elixir'
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 
 " coffeescript
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }
 
 " json
-Plugin 'elzr/vim-json'
-call vundle#end()
+Plug 'elzr/vim-json', { 'for': 'json' }
+
+call plug#end()
 
 filetype plugin indent on
 
