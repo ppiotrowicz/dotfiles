@@ -36,12 +36,13 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'morhetz/gruvbox'
 Plugin 'chriskempson/vim-tomorrow-theme'
 Plugin 'bling/vim-airline'
-Plugin 'edkolev/tmuxline.vim'
+" Plugin 'edkolev/tmuxline.vim'
 
 " ruby
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-bundler'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-rails'
 
 " c#
 Plugin 'OrangeT/vim-csharp'
