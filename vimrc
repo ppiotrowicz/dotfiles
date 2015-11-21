@@ -26,6 +26,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'junegunn/goyo.vim'
 
 " git
 Plugin 'tpope/vim-fugitive'
@@ -317,6 +318,10 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+" Goyo toggle
+nnoremap <Leader>! :Goyo<CR>
+"
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
