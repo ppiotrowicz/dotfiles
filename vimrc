@@ -27,6 +27,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'sirver/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'junegunn/goyo.vim'
+Plugin 'radenling/vim-dispatch-neovim'
 
 " git
 Plugin 'tpope/vim-fugitive'
