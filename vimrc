@@ -106,6 +106,11 @@ set lazyredraw                " redraw only when we need to.
 
 let mapleader = "\<space>"
 " }}}
+" UI {{{
+set guifont=hack:h12
+set guioptions-=T
+set guioptions-=r
+" }}}
 " Whitespace {{{
 set listchars=tab:▸\ ,eol:¬,trail:·
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
