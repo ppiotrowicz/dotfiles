@@ -44,15 +44,15 @@ Plug 'tpope/vim-bundler',    { 'for': 'ruby' }
 Plug 'tpope/vim-rails',      { 'for': 'ruby' }
 
 " c#
-Plug 'OrangeT/vim-csharp', { 'for': 'cs' }
+Plug 'OrangeT/vim-csharp',      { 'for': 'cs' }
 Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': 'cd server && xbuild' }
 
 " elixir
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 
 " coffeescript
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'mustache/vim-mustache-handlebars', { 'for': 'handlebars' }
+Plug 'kchmck/vim-coffee-script',         { 'for': 'coffee' }
+Plug 'mustache/vim-mustache-handlebars', { 'for': 'html.handlebars' }
 
 " json
 Plug 'elzr/vim-json', { 'for': 'json' }
