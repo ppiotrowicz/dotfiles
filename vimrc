@@ -69,6 +69,7 @@ filetype plugin indent on
 let &t_Co=256             " use 256 colors
 
 " DARK THEME
+let base16colorspace=256
 set background=dark       " use dark background
 let g:gruvbox_sign_column = 'dark0'
 colorscheme gruvbox       " use gruvbox theme
@@ -78,6 +79,7 @@ colorscheme gruvbox       " use gruvbox theme
 " set background=light       " use light background
 " }}}
 " Settings {{{
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 set number                    " show line numbers
 set relativenumber            " shows line numbers relative to current line
