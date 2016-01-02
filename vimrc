@@ -221,11 +221,11 @@ augroup omnisharp_commands
     autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
     autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
     autocmd FileType cs nnoremap <leader>dc :OmniSharpDocumentation<cr>
-    autocmd FileType cs nnoremap <leader>t :!bundle exec rake tests<cr>
-    autocmd FileType cs nnoremap <leader>rt :OmniSharpRunTestFixture<cr>
-    autocmd FileType cs nnoremap <leader>ra :OmniSharpRunAllTests<cr>
-    autocmd FileType cs nnoremap <leader>rr :OmniSharpRunLastTests<cr>
-    autocmd FileType cs nnoremap <leader>ru :OmniSharpRunTests<cr>
+    autocmd FileType cs nnoremap <leader>a :call VtrSendCommand('be rake tests<cr>', 1)
+    autocmd FileType cs nnoremap <leader>t :OmniSharpRunTestFixture<cr>
+    " autocmd FileType cs nnoremap <leader>a :OmniSharpRunAllTests<cr>
+    autocmd FileType cs nnoremap <leader>l :OmniSharpRunLastTests<cr>
+    autocmd FileType cs nnoremap <leader>s :OmniSharpRunTests<cr>
     "autocmd FileType cs nnoremap <leader><space> :OmniSharpGetCodeActions<cr>
     autocmd FileType cs nnoremap <leader>nm :OmniSharpRename<cr>
     autocmd FileType cs nnoremap <leader>tp :OmniSharpAddToProject<cr>
