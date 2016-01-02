@@ -25,6 +25,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
 Plug 'radenling/vim-dispatch-neovim'
+Plug 'majutsushi/tagbar'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -234,6 +235,9 @@ set updatetime=500 " ms
 xmap ga <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+" }}}
+" Tagbar {{{
+nmap <c-t> :TagbarToggle<CR>
 " }}}
 " Ack {{{
 if executable('ag')
