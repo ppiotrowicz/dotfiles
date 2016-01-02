@@ -107,7 +107,7 @@ set splitbelow                " open horizontal split below current window
 set splitright                " open vertical split to the right of the current window
 set nowrap                    " do not wrap stuff
 set lazyredraw                " redraw only when we need to.
-"set showmatch                 " highlight matching [{()}]
+set shortmess=aItT             " avoid 'hit enter' prompts
 
 let mapleader = "\<space>"
 " }}}
@@ -150,6 +150,7 @@ let g:syntastic_style_error_symbol = "✗"
 let g:syntastic_style_warning_symbol = "⚠"
 " }}}
 " YouCompleteMe {{{
+let g:ycm_auto_trigger = 0
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 0
@@ -191,6 +192,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 " OmniSharp {{{
 filetype plugin on
 
+let g:OmniSharp_server_type = 'v1'
 let g:OmniSharp_host = "http://localhost:2000"
 
 "Set the type lookup function to use the preview window instead of the status line
