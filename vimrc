@@ -26,6 +26,8 @@ Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'majutsushi/tagbar'
+Plug 'janko-m/vim-test'
+Plug 'christoomey/vim-tmux-runner'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -37,10 +39,9 @@ Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'bling/vim-airline'
 
 " ruby
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'tpope/vim-bundler', { 'for': 'ruby' }
-Plug 'thoughtbot/vim-rspec', { 'for': 'ruby' }
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'vim-ruby/vim-ruby',    { 'for': 'ruby' }
+Plug 'tpope/vim-bundler',    { 'for': 'ruby' }
+Plug 'tpope/vim-rails',      { 'for': 'ruby' }
 
 " c#
 Plug 'OrangeT/vim-csharp', { 'for': 'cs' }
@@ -244,6 +245,13 @@ if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
 " }}}
+" vim-test {{{
+let g:test#strategy="vtr"
+nmap <silent> <Leader>t :TestFile<CR>
+nmap <silent> <Leader>l :TestLast<CR>
+nmap <silent> <Leader>s :TestNearest<CR>
+nmap <silent> <Leader>a :TestSuite<CR>
+" }}}
 " Functions {{{
 function! Preserve(command)
   " Preparation: save last search, and cursor position.
@@ -314,13 +322,6 @@ nnoremap <leader>= :wincmd =<cr>
 
 " Find word under cursor
 nnoremap <leader>* :Ack <c-r><c-w><CR>
-
-" RSpec.vim mappings
-let g:rspec_command = "Dispatch bundle exec rspec {spec}"
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 
 " Goyo toggle
 nnoremap <Leader>! :Goyo<CR>
