@@ -19,8 +19,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-endwise'
 Plug 'mileszs/ack.vim'
 Plug 'ervandew/supertab'
-Plug 'godlygeek/tabular'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --omnisharp-completer' }
+Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
+Plug 'Valloric/YouCompleteMe',  { 'do': './install.py --omnisharp-completer' }
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
@@ -228,6 +228,12 @@ augroup omnisharp_commands
 augroup END
 
 set updatetime=500 " ms
+" }}}
+" Easy align {{{
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 " }}}
 " Ack {{{
 if executable('ag')
