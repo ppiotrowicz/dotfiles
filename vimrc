@@ -57,6 +57,9 @@ Plug 'mustache/vim-mustache-handlebars', { 'for': 'html.handlebars' }
 " json
 Plug 'elzr/vim-json', { 'for': 'json' }
 
+" plain text
+Plug 'xolox/vim-notes' | Plug 'xolox/vim-misc'
+
 call plug#end()
 
 filetype plugin indent on
@@ -244,6 +247,9 @@ nmap <c-t> :TagbarToggle<CR>
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+" }}}
+" Notes {{{
+let g:notes_directories = ['~/Documents/Notes', '~/Dropbox/Notes']
 " }}}
 " vim-test {{{
 let g:test#strategy="vtr"
