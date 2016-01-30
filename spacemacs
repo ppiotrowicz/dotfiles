@@ -12,11 +12,14 @@
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     ;; --------------------------------------------------------
-     ;; Uncomment a layer name and press C-c C-c to install it
-     ;; --------------------------------------------------------
-     (auto-completion :disabled-for org)
+     (auto-completion :disabled-for org
+                      :variables
+                      auto-completion-enable-snippets-in-popup t)
      org
+     git
+     github
+     deft
+     java
      syntax-checking
      themes-megapack
      csharp
@@ -24,20 +27,18 @@
            ruby-version-manager 'rbenv
            ruby-test-runner 'rspec
            ruby-enable-enh-ruby-mode nil)
+     ruby-on-rails
      html
      javascript
      (shell :variables shell-default-shell 'eshell)
      unimpared
      spotify
+     markdown
+     ranger
      )
-   ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages
-   '(
-     rubocop
-     )
-   ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
-   ;; are declared in a layer which is not a member of
-   ;; the list `dotspacemacs-configuration-layers'
+
+   dotspacemacs-excluded-packages '(rubocop)
+
    dotspacemacs-delete-orphan-packages t))
 
 (defun dotspacemacs/init ()
@@ -141,13 +142,11 @@ before layers configuration."
    )
   ;; User initialization goes here
   (setq-default
-   dotspacemacs-line-numbers t
    dotspacemacs-line-numbers 'relative)
 
   ;; Org
-   org-M-RET-may-split-line
-   '((headline . nil) (item . nil) (table . nil))
-   org-directory "~/org"
+  (setq org-M-RET-may-split-line '((headline . nil) (item . nil) (table . nil)))
+  (setq org-directory "~/org")
 
    ;; csharp
   (setq-default omnisharp-server-executable-path "/usr/local/bin/omnisharp")
@@ -155,13 +154,31 @@ before layers configuration."
   ;; Switch the compilation buffer mode with C-x C-q (useful
   ;; when interacting with a debugger)
   (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+
+  ;; deft
+  (setq deft-directory "~/org")
+  (setq deft-recursive t)
+
+  ;;java
+  (setq eclim-eclipse-dirs "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse"
+        eclim-executable "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse/eclim")
   )
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  ;; UI
   (global-hl-line-mode -1)
+  (global-vi-tilde-fringe-mode -1)
+  (setq powerline-default-separator 'slant)
+
+  ;; Make evil-mode up/down operate in screen lines instead of logical lines
+  (define-key evil-motion-state-map "j" 'evil-next-visual-line)
+  (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
+  ;; Also in visual mode
+  (define-key evil-visual-state-map "j" 'evil-next-visual-line)
+  (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
