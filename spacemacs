@@ -15,26 +15,26 @@
      (auto-completion :disabled-for org
                       :variables
                       auto-completion-enable-snippets-in-popup t)
-     org
+     csharp
+     deft
      git
      github
-     deft
+     html
      java
-     syntax-checking
-     themes-megapack
-     csharp
+     javascript
+     markdown
+     org
+     ranger
      (ruby :variables
-           ruby-version-manager 'rbenv
            ruby-test-runner 'rspec
+           ruby-version-manager 'rbenv
            ruby-enable-enh-ruby-mode nil)
      ruby-on-rails
-     html
-     javascript
      (shell :variables shell-default-shell 'eshell)
-     unimpared
      spotify
-     markdown
-     ranger
+     syntax-checking
+     themes-megapack
+     unimpared
      )
 
    dotspacemacs-excluded-packages '(rubocop)
