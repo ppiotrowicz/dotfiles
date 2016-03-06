@@ -24,17 +24,21 @@
      javascript
      markdown
      org
+     osx
+     tmux
      ranger
+     restclient
      (ruby :variables
            ruby-test-runner 'rspec
            ruby-version-manager 'rbenv
-           ruby-enable-enh-ruby-mode nil)
+           ruby-enable-enh-ruby-mode t)
      ruby-on-rails
      (shell :variables shell-default-shell 'eshell)
      spotify
      syntax-checking
      themes-megapack
      unimpared
+     yaml
      )
 
    dotspacemacs-excluded-packages '(rubocop)
@@ -144,6 +148,22 @@ before layers configuration."
   (setq-default
    dotspacemacs-line-numbers 'relative)
 
+  ;; visual selection should not override system clipboard
+  ;; (fset 'evil-visual-update-x-selection 'ignore)
+
+  ;; (defun my-copy ()
+  ;;   (interactive)
+  ;;   (mac-handle-copy nil))
+
+  ;; (defun my-paste ()
+  ;;   (interactive)
+  ;;   (setq x-select-enable-clipboard t)
+  ;;   (yank)
+  ;;     (setq x-select-enable-clipboard nil))
+
+  ;; (global-set-key [(hyper v)] 'my-paste)
+  ;; (global-set-key [(hyper c)] 'my-copy)
+
   ;; Org
   (setq org-M-RET-may-split-line '((headline . nil) (item . nil) (table . nil)))
   (setq org-directory "~/org")
@@ -159,12 +179,23 @@ before layers configuration."
   (setq deft-directory "~/org")
   (setq deft-recursive t)
 
-  ;;java
-  (setq eclim-eclipse-dirs "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse"
-        eclim-executable "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse/eclim")
+  ;; java
+  ;; (setq eclim-eclipse-dirs "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse"
+  ;;       eclim-executable "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse/eclim")
+  ;; web development
+  (setq coffee-tab-width 2
+        javascript-indent-level 2
+        js-indent-level 2
+        js2-basic-offset 2
+        web-mode-markup-indent-offset 2
+        web-mode-css-indent-offset 2
+        web-mode-code-indent-offset 2
+        sass-indent-offset 2
+        css-indent-offset 2)
   )
 
-(defun dotspacemacs/config ()
+
+(defun dotspacemacs/user-config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
@@ -173,12 +204,26 @@ layers configuration."
   (global-vi-tilde-fringe-mode -1)
   (setq powerline-default-separator 'slant)
 
+  ;; smartparens
+  (setq sp-highlight-pair-overlay nil
+        sp-highlight-wrap-overlay nil
+        sp-highlight-wrap-tag-overlay nil
+   )
+
   ;; Make evil-mode up/down operate in screen lines instead of logical lines
   (define-key evil-motion-state-map "j" 'evil-next-visual-line)
   (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
   ;; Also in visual mode
   (define-key evil-visual-state-map "j" 'evil-next-visual-line)
   (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+  (global-set-key (kbd "C-h") 'evil-window-left)
+  (global-set-key (kbd "C-j") 'evil-window-down)
+  (global-set-key (kbd "C-k") 'evil-window-up)
+  (global-set-key (kbd "C-l") 'evil-window-right)
+
+  ;; neo tree
+  (setq neo-theme 'nerd)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
