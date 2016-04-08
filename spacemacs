@@ -53,7 +53,7 @@
      yaml
      )
 
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(origami)
 
    dotspacemacs-excluded-packages '(rubocop smartparens)
 
@@ -312,6 +312,17 @@ layers configuration."
 
   ;; neo tree
   (setq neo-theme 'nerd)
+
+  ;; origami
+  (global-origami-mode 1)
+  (define-key evil-normal-state-map "zo" 'origami-open-node)
+  (define-key evil-normal-state-map "zO" 'origami-open-node-recursively)
+  (define-key evil-normal-state-map "zc" 'origami-close-node)
+  (define-key evil-normal-state-map "zC" 'origami-close-node-recursively)
+  (define-key evil-normal-state-map "za" 'origami-forward-toggle-node)
+  (define-key evil-normal-state-map "zr" 'origami-open-all-nodes)
+  (define-key evil-normal-state-map "zm" 'origami-close-all-nodes)
+  (define-key evil-normal-state-map "zf" 'origami-show-only-node)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
