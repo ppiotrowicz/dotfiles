@@ -49,11 +49,11 @@
      spotify
      syntax-checking
      themes-megapack
-     unimpared
+     unimpaired
      yaml
      )
 
-   dotspacemacs-additional-packages '(origami)
+   dotspacemacs-additional-packages '(yafolding)
 
    dotspacemacs-excluded-packages '(rubocop smartparens)
 
@@ -96,7 +96,7 @@ values."
    ;; dotspacemacs-startup-banner 'official
    dotspacemacs-startup-banner 'official
    ;; t if you always want to see the changelog at startup
-   dotspacemacs-always-show-changelog t
+   dotspacemacs-always-show-changelog nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
    dotspacemacs-startup-lists '(recents projects)
@@ -108,10 +108,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox
-                         solarized-dark
-                         monokai
-                         zenburn)
+   dotspacemacs-themes '(gruvbox)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -190,7 +187,7 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up.
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup t
+   dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX."
    dotspacemacs-fullscreen-use-non-native nil
@@ -314,15 +311,15 @@ layers configuration."
   (setq neo-theme 'nerd)
 
   ;; origami
-  (global-origami-mode 1)
-  (define-key evil-normal-state-map "zo" 'origami-open-node)
-  (define-key evil-normal-state-map "zO" 'origami-open-node-recursively)
-  (define-key evil-normal-state-map "zc" 'origami-close-node)
-  (define-key evil-normal-state-map "zC" 'origami-close-node-recursively)
-  (define-key evil-normal-state-map "za" 'origami-forward-toggle-node)
-  (define-key evil-normal-state-map "zr" 'origami-open-all-nodes)
-  (define-key evil-normal-state-map "zm" 'origami-close-all-nodes)
-  (define-key evil-normal-state-map "zf" 'origami-show-only-node)
+  ;; (global-origami-mode 1)
+  (require 'yafolding)
+  (add-hook 'enh-ruby-mode-hook 'yafolding-mode)
+  (define-key yafolding-mode-map (kbd "<C-S-return>") nil)
+  (define-key yafolding-mode-map (kbd "<C-M-return>") nil)
+  (define-key yafolding-mode-map (kbd "<C-return>") nil)
+  (define-key evil-normal-state-map (kbd "zm") 'yafolding-toggle-all)
+  (define-key evil-normal-state-map (kbd "zc") 'yafolding-hide-parent-element)
+  (define-key evil-normal-state-map (kbd "za") 'yafolding-toggle-element)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -333,11 +330,11 @@ layers configuration."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(paradox-github-token t))
-;; (custom-set-faces
-;;  ;; custom-set-faces was added by Custom.
-;;  ;; If you edit it by hand, you could mess it up, so be careful.
-;;  ;; Your init file should contain only one such instance.
-;;  ;; If there is more than one, they won't work right.
-;;  '(default ((t (:background nil))))
-;;  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
-;;  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(erm-syn-errline ((t nil))))
