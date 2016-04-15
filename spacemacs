@@ -25,6 +25,8 @@
                       auto-completion-enable-sort-by-usage t
                       auto-completion-private-snippets-directory "~/.emacs.d/private/snippets/"
                       )
+     (colors :variables
+             colors-enable-nyan-cat-progress-bar t)
      csharp
      deft
      git
@@ -47,9 +49,12 @@
      ruby-on-rails
      (shell :variables shell-default-shell 'eshell)
      spotify
-     syntax-checking
+     (syntax-checking :variables syntax-checking-enable-tooltips nil)
      themes-megapack
      unimpaired
+     (version-control :variables
+                      version-control-diff-tool 'git-gutter+
+                      version-control-global-margin t)
      yaml
      )
 
@@ -108,7 +113,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox)
+   dotspacemacs-themes '(gruvbox spacemacs-light)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -263,9 +268,8 @@ layers configuration."
    ;; csharp
   (setq-default omnisharp-server-executable-path "/usr/local/bin/omnisharp")
 
-  ;; Switch the compilation buffer mode with C-x C-q (useful
-  ;; when interacting with a debugger)
-  (add-hook 'after-init-hook 'inf-ruby-switch-setup)
+  ;; ruby
+  (add-hook 'compilation-filter-hook 'inf-ruby-auto-enter)
 
   ;; deft
   (setq deft-directory "~/org")
@@ -287,7 +291,7 @@ layers configuration."
   ;; UI
   (global-hl-line-mode -1)
   (global-vi-tilde-fringe-mode -1)
-  (setq powerline-default-separator 'arrow)
+  (setq powerline-default-separator 'slant)
 
   ;; smartparens
   (setq sp-highlight-pair-overlay nil
@@ -337,4 +341,5 @@ layers configuration."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(erm-syn-errline ((t nil))))
+ '(erm-syn-errline ((t nil)))
+ '(erm-syn-warnline ((t nil))))
