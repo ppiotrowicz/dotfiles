@@ -56,6 +56,9 @@
                       version-control-diff-tool 'git-gutter+
                       version-control-global-margin t)
      yaml
+
+     ;; custom layers
+     evil-little-word
      )
 
    dotspacemacs-additional-packages '(yafolding)
