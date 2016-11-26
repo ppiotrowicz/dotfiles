@@ -31,12 +31,12 @@
 [format]
   pretty = %C(yellow)%h%Creset %s %C(red)(%an, %cr)%Creset
 [push]
-	default = current
+  default = current
 [gc]
   auto = 1
 [merge]
   summary = 1
 [rebase]
-	autosquash = true
+  autosquash = true
 [init]
   templatedir = ~/.git_template
