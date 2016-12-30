@@ -34,7 +34,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 " themes
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'bling/vim-airline'
 
@@ -68,21 +69,26 @@ filetype plugin indent on
 " Theme {{{
 let &t_Co=256             " use 256 colors
 
+" ATOM THEME
+let g:onedark_termcolors=256
+set termguicolors
+colorscheme onedark
+
 " DARK THEME
-let base16colorspace=256
-set background=dark       " use dark background
-let g:gruvbox_sign_column = 'dark0'
-colorscheme gruvbox       " use gruvbox theme
+" let base16colorspace=256
+" set background=dark       " use dark background
+" let g:gruvbox_sign_column = 'dark0'
+" colorscheme gruvbox       " use gruvbox theme
 
 " LIGHT THEME
 " colorscheme Tomorrow       " use Tomorrow theme
 " set background=light       " use light background
 " }}}
 " Settings {{{
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 syntax enable
 set number                    " show line numbers
-set relativenumber            " shows line numbers relative to current line
+" set relativenumber            " shows line numbers relative to current line
 set clipboard=unnamed         " system clipboard to * register
 set tabstop=2                 " tab == 2 spaces
 set shiftwidth=2              " << and >> use 2 spaces
