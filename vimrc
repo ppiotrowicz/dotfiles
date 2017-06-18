@@ -20,9 +20,9 @@ Plug 'tpope/vim-endwise'
 Plug 'mileszs/ack.vim'
 Plug 'ervandew/supertab'
 Plug 'junegunn/vim-easy-align', { 'on': ['<Plug>(EasyAlign)', 'EasyAlign'] }
-Plug 'Valloric/YouCompleteMe',  { 'do': './install.py --omnisharp-completer' }
+" Plug 'Valloric/YouCompleteMe',  { 'do': './install.py --omnisharp-completer' }
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
+" "Plug 'sirver/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/goyo.vim'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'majutsushi/tagbar'
@@ -45,8 +45,8 @@ Plug 'tpope/vim-bundler',    { 'for': 'ruby' }
 Plug 'tpope/vim-rails',      { 'for': 'ruby' }
 
 " c#
-Plug 'OrangeT/vim-csharp',      { 'for': 'cs' }
-Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': 'cd server && xbuild' }
+" Plug 'OrangeT/vim-csharp',      { 'for': 'cs' }
+" Plug 'OmniSharp/omnisharp-vim', { 'for': 'cs', 'do': 'cd server && xbuild' }
 
 " elixir
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
