@@ -71,7 +71,7 @@ let &t_Co=256             " use 256 colors
 
 " ATOM THEME
 let g:onedark_termcolors=256
-set termguicolors
+" set termguicolors
 colorscheme onedark
 
 " DARK THEME
