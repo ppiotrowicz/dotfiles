@@ -1,0 +1,32 @@
+tap "caskroom/cask"
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/services"
+tap "homebrew/versions"
+brew "git"
+brew "emacs", args: ["with-cocoa", "with-gnutls", "with-imagemagick@6", "with-librsvg", "with-mailutils"]
+brew "cask"
+brew "cowsay"
+brew "fish"
+brew "fortune"
+brew "gnupg", args: ["with-readline"]
+brew "hub"
+brew "mysql@5.6", restart_service: true
+brew "rbenv"
+brew "reattach-to-user-namespace"
+brew "the_silver_searcher"
+brew "tmux", args: ["HEAD"]
+brew "vim", args: ["with-lua", "with-luajit", "with-override-system-vi"]
+brew "wget"
+brew "zsh"
+cask "1password"
+cask "alfred"
+cask "dropbox"
+cask "google-chrome"
+cask "hipchat"
+cask "iterm2"
+cask "java"
+cask "karabiner-elements"
+cask "sequel-pro"
+cask "spectacle"
+cask "spotify"
