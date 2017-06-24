@@ -38,3 +38,5 @@
   summary = 1
 [rebase]
   autosquash = true
+[github]
+	user = ppiotrowicz@gmail.com
