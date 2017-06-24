@@ -18,4 +18,4 @@ precmd () {
 }
 
 setopt prompt_subst
-PROMPT='%F{white} λ %F{blue}%~${vcs_info_msg_0_}%F{blue} ❯ %{$reset_color%}'
+PROMPT='%F{white} λ %F{blue}%~${vcs_info_msg_0_/#% /}%F{blue} ❯ %{$reset_color%}'
