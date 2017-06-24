@@ -18,4 +18,17 @@ precmd () {
 }
 
 setopt prompt_subst
-PROMPT='%F{white} λ %F{blue}%~${vcs_info_msg_0_/#% /}%F{blue} ❯ %{$reset_color%}'
+
+TRAPWINCH() {
+  zle && { zle reset-prompt; zle -R }
+}
+
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="${${KEYMAP/vicmd/❮}/(main|viins)/❯}"
+    PROMPT='%F{white} λ %F{blue}%~${vcs_info_msg_0_/#% /}%F{blue} $VIM_PROMPT %{$reset_color%}'
+
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
