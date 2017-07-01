@@ -14,6 +14,7 @@ brew "gnupg", args: ["with-readline"]
 brew "gpg-agent"
 brew "hub"
 brew "ledger"
+brew "mas"
 brew "mysql@5.6", restart_service: true
 brew "node"
 brew "pinentry-mac"
@@ -39,3 +40,5 @@ cask "spectacle"
 cask "spotify"
 cask "transmission"
 cask "vlc"
+mas "Monosnap", id: 540348655
+mas "Spark", id: 1176895641
