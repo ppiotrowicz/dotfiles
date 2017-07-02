@@ -1,7 +1,10 @@
 #!/bin/sh
 
+# links config files
+
 # git
 ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
+ln -s ~/dotfiles/git/gitignore ~/.gitignore
 
 # tmux
 ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
@@ -14,5 +17,6 @@ ln -s ~/dotfiles/ruby/pryrc ~/.pryrc
 
 # zsh
 ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
-# other
+
+# ag
 ln -s ~/dotfiles/agignore ~/.agignore
