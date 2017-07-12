@@ -22,7 +22,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.finder ShowStatusBar -bool true
 
 # Disable spotlight indexing
-sudo mdutil -i off -d /
+# sudo mdutil -i off -d /
 
 # Enable tap to click
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
