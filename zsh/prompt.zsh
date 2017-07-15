@@ -9,9 +9,9 @@ zstyle ':vcs_info:*' enable git svn
 
 precmd () {
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats ' %c%u'
+        zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%f'
     } else {
-        zstyle ':vcs_info:*' formats ' %c%u%F{yellow}✱%f'
+        zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%F{yellow}✱%f (%a)'
     }
 
     vcs_info
