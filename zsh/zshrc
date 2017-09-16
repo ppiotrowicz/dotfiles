@@ -4,7 +4,8 @@
 export ZSH=$HOME/dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/code/base/services/
+export BASE_SERVICES=~/code/base/services/
+export BASE_GEMS=~/code/base/gems/
 
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
 
