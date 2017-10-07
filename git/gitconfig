@@ -40,3 +40,5 @@
   autosquash = true
 [github]
 	user = ppiotrowicz@gmail.com
+[magit]
+	hideCampaign = true
