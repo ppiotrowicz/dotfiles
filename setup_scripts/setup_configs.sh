@@ -12,11 +12,6 @@ ln -s ~/dotfiles/tmux/tmux.styles.conf ~/.tmux.styles.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
-# ruby
-ln -s ~/dotfiles/ruby/gemrc ~/.gemrc
-ln -s ~/dotfiles/ruby/irbrc ~/.irbrc
-ln -s ~/dotfiles/ruby/pryrc ~/.pryrc
-
 # zsh
 ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 
