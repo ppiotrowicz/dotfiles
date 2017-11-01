@@ -6,12 +6,6 @@
 ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/git/gitignore ~/.gitignore
 
-# tmux
-ln -s ~/dotfiles/tmux/tmux.conf ~/.tmux.conf
-ln -s ~/dotfiles/tmux/tmux.styles.conf ~/.tmux.styles.conf
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-~/.tmux/plugins/tpm/bin/install_plugins
-
 # zsh
 ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
 

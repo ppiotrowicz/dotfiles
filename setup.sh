@@ -9,6 +9,7 @@ cd ~/dotfiles/setup_scripts/
 ./setup_fonts.sh
 ./setup_emacs.sh
 ./setup_vim.sh
+./setup_tmux.sh
 ./setup_ruby.sh
 ./setup_osx.sh
 
