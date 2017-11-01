@@ -12,5 +12,6 @@ cd ~/dotfiles/setup_scripts/
 ./setup_tmux.sh
 ./setup_ruby.sh
 ./setup_osx.sh
+./setup_zsh.sh
 
 cd ~

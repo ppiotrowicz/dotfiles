@@ -6,9 +6,6 @@
 ln -s ~/dotfiles/git/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/git/gitignore ~/.gitignore
 
-# zsh
-ln -s ~/dotfiles/zsh/zshrc ~/.zshrc
-
 # ag
 ln -s ~/dotfiles/agignore ~/.agignore
 
