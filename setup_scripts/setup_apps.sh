@@ -10,3 +10,6 @@ brew tap Homebrew/bundle
 
 # install apps from Brewfile 
 brew bundle
+
+# link terminal apps
+ln -s ~/dotfiles/bin/ ~/.bin
