@@ -46,6 +46,8 @@ unset config_files
 
 # Path
 export PATH=~/.bin:$PATH
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
 # Better history
 # Credits to https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
