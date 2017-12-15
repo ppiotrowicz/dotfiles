@@ -3,8 +3,6 @@
 # This lets you quickly jump into a project directory.
 #
 
-if [ ! -z "$1" ] && [ -s "$BASE_GEMS/$1" ]; then
-  cd "$BASE_GEMS/$1"
-else
-  cd "$BASE_SERVICES/$1"
+if [ ! -z "$1" ] && [ -s "$CODE_DIR/$1" ]; then
+  cd "$CODE_DIR/$1"
 fi

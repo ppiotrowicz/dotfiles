@@ -1,5 +1,4 @@
 #compdef c
-_files -W $BASE_SERVICES -/
-_files -W $BASE_GEMS -/
+_files -W $CODE_DIR -/
 
 # See further documentation in `functions/c`.
