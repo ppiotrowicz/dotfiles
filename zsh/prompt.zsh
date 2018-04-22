@@ -11,7 +11,7 @@ precmd () {
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
         zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%f'
     } else {
-        zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%F{yellow}✱%f'
+        zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%F{yellow}*%f'
     }
 
     vcs_info
@@ -24,8 +24,8 @@ TRAPWINCH() {
 }
 
 function zle-line-init zle-keymap-select {
-    VIM_PROMPT="${${KEYMAP/vicmd/❮}/(main|viins)/❯}"
-    PROMPT='%{$reset_color%}%{$fg[white]%} λ %{$fg[blue]%}%~${vcs_info_msg_0_/#% /}%{$fg[blue]%} $VIM_PROMPT%{$reset_color%} '
+    VIM_PROMPT="${${KEYMAP/vicmd/||}/(main|viins)/::}"
+    PROMPT='%{$fg[red]%} PP %{$fg[blue]%}$VIM_PROMPT %{$fg[blue]%}%~${vcs_info_msg_0_/#% /}%{$fg[blue]%}>%{$reset_color%} '
 
     zle reset-prompt
 }
