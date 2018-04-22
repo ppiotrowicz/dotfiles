@@ -25,7 +25,7 @@ TRAPWINCH() {
 
 function zle-line-init zle-keymap-select {
     VIM_PROMPT="${${KEYMAP/vicmd/||}/(main|viins)/::}"
-    PROMPT='%{$fg[red]%} PP %{$fg[blue]%}$VIM_PROMPT %{$fg[blue]%}%~${vcs_info_msg_0_/#% /}%{$fg[blue]%}>%{$reset_color%} '
+    PROMPT='%{$fg[red]%} pp %{$fg[blue]%}$VIM_PROMPT %{$fg[blue]%}%~${vcs_info_msg_0_/#% /}%{$fg[blue]%}>%{$reset_color%} '
 
     zle reset-prompt
 }
