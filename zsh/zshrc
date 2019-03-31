@@ -6,7 +6,7 @@ export ZSH=$HOME/dotfiles
 # your project folder that we can `c [tab]` to
 export CODE_DIR=~/code/
 
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_131.jdk/Contents/Home
+export JAVA_HOME=`/usr/libexec/java_home`
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
