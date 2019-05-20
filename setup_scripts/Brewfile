@@ -4,15 +4,14 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
-tap "homebrew/versions"
 tap "osx-cross/avr"
 tap "px4/px4"
 tap "railwaycat/emacsmacport"
 brew "avrdude"
 brew "sqlite"
 brew "awscli"
-brew "icu4c"
-brew "libpng"
+brew "brotli"
+brew "p11-kit"
 brew "cask"
 brew "cloc"
 brew "cmake"
@@ -21,25 +20,24 @@ brew "dfu-programmer"
 brew "dfu-util"
 brew "docker", link: false
 brew "docker-compose", link: false
+brew "libpng"
 brew "elixir"
 brew "exa"
 brew "fortune"
+brew "fswatch"
 brew "fzf"
 brew "git"
 brew "gnu-typist"
-brew "p11-kit"
 brew "gnupg"
-brew "gnuplot", args: ["with-qt", "with-wxmac"]
-brew "goaccess"
-brew "gpg-agent"
+brew "go"
 brew "gradle"
+brew "graphviz"
 brew "hub"
+brew "icu4c"
 brew "imagemagick@6", link: true
-brew "ios-webkit-debug-proxy"
 brew "oniguruma"
 brew "jq"
-brew "lastpass-cli"
-brew "lnav"
+brew "libgit2"
 brew "mas"
 brew "maven"
 brew "mercurial"
@@ -50,6 +48,7 @@ brew "noti"
 brew "nvm"
 brew "p7zip"
 brew "pinentry-mac"
+brew "pkg-config"
 brew "postgresql", restart_service: true
 brew "postgresql@10"
 brew "prettyping"
@@ -75,10 +74,10 @@ brew "osx-cross/avr/avr-gcc@7"
 brew "px4/px4/gcc-arm-none-eabi"
 brew "railwaycat/emacsmacport/emacs-mac", args: ["HEAD", "with-dbus", "with-imagemagick", "with-modern-icon", "with-modules", "with-natural-title-bar"]
 cask "1password"
+cask "1password6"
 cask "alfred"
 cask "arduino"
 cask "bitbar"
-cask "charles"
 cask "dash"
 cask "docker"
 cask "dropbox"
@@ -91,6 +90,7 @@ cask "java8"
 cask "karabiner-elements"
 cask "kindle"
 cask "logitech-options"
+cask "ngrok"
 cask "notion"
 cask "psequel"
 cask "qnapi"
@@ -101,12 +101,18 @@ cask "spectacle"
 cask "spotify"
 cask "the-unarchiver"
 cask "transmission"
+cask "tunnelblick"
 cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
-mas "Amphetamine", id: 937984704
-mas "Monosnap", id: 540348655
-mas "Spark", id: 1176895641
-mas "Things3", id: 904280696
-mas "Unsplash Wallpapers", id: 1284863847
-mas "Xcode", id: 497799835
+mas "com.apple.dt.Xcode", id: 497799835
+mas "com.apple.garageband10", id: 682658836
+mas "com.apple.iMovieApp", id: 408981434
+mas "com.apple.iWork.Keynote", id: 409183694
+mas "com.apple.iWork.Numbers", id: 409203825
+mas "com.apple.iWork.Pages", id: 409201541
+mas "com.culturedcode.ThingsMac", id: 904280696
+mas "com.if.Amphetamine", id: 937984704
+mas "com.monosnap.monosnap", id: 540348655
+mas "com.readdle.smartemail-Mac", id: 1176895641
+mas "com.unsplash.Wallpapers", id: 1284863847
