@@ -1,3 +1,4 @@
+tap "d12frosted/emacs-plus"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-drivers"
@@ -7,10 +8,12 @@ tap "homebrew/services"
 tap "osx-cross/avr"
 tap "px4/px4"
 tap "railwaycat/emacsmacport"
+tap "tylerbrock/saw"
 brew "avrdude"
 brew "sqlite"
-brew "awscli"
+brew "awscli", link: false
 brew "brotli"
+brew "libpng"
 brew "p11-kit"
 brew "cask"
 brew "cloc"
@@ -20,70 +23,80 @@ brew "dfu-programmer"
 brew "dfu-util"
 brew "docker", link: false
 brew "docker-compose", link: false
-brew "libpng"
+brew "elasticsearch@5.6"
 brew "elixir"
 brew "exa"
 brew "fortune"
 brew "fswatch"
 brew "fzf"
+brew "gdrive"
 brew "git"
 brew "gnu-typist"
 brew "gnupg"
 brew "go"
 brew "gradle"
 brew "graphviz"
-brew "hub"
 brew "icu4c"
+brew "hub"
+brew "libheif"
 brew "imagemagick@6", link: true
 brew "oniguruma"
 brew "jq"
+brew "libfixposix"
 brew "libgit2"
 brew "mas"
 brew "maven"
 brew "mercurial"
 brew "mysql@5.6"
-brew "node"
+brew "node", link: false
 brew "node@8"
 brew "noti"
-brew "nvm"
 brew "p7zip"
 brew "pinentry-mac"
 brew "pkg-config"
-brew "postgresql", restart_service: true
-brew "postgresql@10"
-brew "prettyping"
+brew "qt"
+brew "poppler"
+brew "postgresql"
+brew "pyqt"
+brew "qt@5.5"
 brew "ruby-build"
 brew "rbenv"
 brew "reattach-to-user-namespace"
 brew "redis"
 brew "ripgrep"
 brew "rust"
+brew "sbcl"
+brew "swig"
 brew "terraform"
+brew "tesseract"
 brew "the_silver_searcher"
 brew "tldr"
 brew "tmux"
 brew "v8"
 brew "vim"
+brew "watchexec"
 brew "watchman"
 brew "wget"
 brew "yank"
 brew "yarn"
 brew "zsh"
+brew "d12frosted/emacs-plus/emacs-plus", args: ["HEAD", "with-jansson", "with-modern-icon", "without-multicolor-fonts", "without-spacemacs-icon"]
 brew "osx-cross/avr/avr-gcc"
 brew "osx-cross/avr/avr-gcc@7"
 brew "px4/px4/gcc-arm-none-eabi"
-brew "railwaycat/emacsmacport/emacs-mac", args: ["HEAD", "with-dbus", "with-imagemagick", "with-modern-icon", "with-modules", "with-natural-title-bar"]
-cask "1password"
+brew "tylerbrock/saw/saw"
 cask "1password6"
 cask "alfred"
 cask "arduino"
 cask "bitbar"
+cask "chromedriver"
 cask "dash"
 cask "docker"
 cask "dropbox"
 cask "fantastical"
 cask "firefox"
 cask "fluor"
+cask "gitify"
 cask "google-chrome"
 cask "iterm2"
 cask "java8"
@@ -93,6 +106,7 @@ cask "logitech-options"
 cask "ngrok"
 cask "notion"
 cask "psequel"
+cask "qmk-toolbox"
 cask "qnapi"
 cask "sequel-pro"
 cask "skype"
@@ -105,14 +119,13 @@ cask "tunnelblick"
 cask "visual-studio-code"
 cask "vlc"
 cask "whatsapp"
-mas "com.apple.dt.Xcode", id: 497799835
-mas "com.apple.garageband10", id: 682658836
-mas "com.apple.iMovieApp", id: 408981434
-mas "com.apple.iWork.Keynote", id: 409183694
-mas "com.apple.iWork.Numbers", id: 409203825
-mas "com.apple.iWork.Pages", id: 409201541
-mas "com.culturedcode.ThingsMac", id: 904280696
-mas "com.if.Amphetamine", id: 937984704
-mas "com.monosnap.monosnap", id: 540348655
-mas "com.readdle.smartemail-Mac", id: 1176895641
-mas "com.unsplash.Wallpapers", id: 1284863847
+mas "Amphetamine", id: 937984704
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Monosnap", id: 540348655
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Things", id: 904280696
+mas "Unsplash Wallpapers", id: 1284863847
+mas "Xcode", id: 497799835
