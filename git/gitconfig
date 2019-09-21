@@ -17,7 +17,7 @@
   unstage = reset HEAD
   uncommit = reset --soft HEAD^
   ctags = !.git/hooks/ctags
-  cleanup = "!git branch --merged | grep -v -P '^\\*|master|develop' | xargs -n1 -r git branch -d"
+  cleanup = "!git branch --merged master | grep -v '^[ *]*master$' | xargs git branch -d"
 [color]
   diff = auto
   status = auto
