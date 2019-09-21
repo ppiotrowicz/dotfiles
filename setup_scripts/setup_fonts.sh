@@ -30,3 +30,13 @@ wget "http://input.fontbureau.com/build/?fontSelection=whole&a=0&g=0&i=0&l=0&zer
 unzip input.zip
 cp Input_Fonts/InputMono/InputMonoCondensed/InputMonoCondensed-*.ttf ~/Library/Fonts
 rm -rf ~/tmp/
+
+# Iosevka
+echo "Installing Iosevka"
+
+mkdir ~/tmp/
+cd ~/tmp
+wget "https://github.com/be5invis/Iosevka/releases/download/v2.3.0/01-iosevka-2.3.0.zip" -O iosevka.zip
+unzip iosevka.zip
+cp iosevka/ttf/*.ttf ~/Library/Fonts
+rm -rf ~/tmp/
