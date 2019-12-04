@@ -54,6 +54,8 @@ export PATH="/usr/local/opt/elasticsearch@5.6/bin:$PATH"
 export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 # export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
 
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # Better history
 # Credits to https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
 autoload -U up-line-or-beginning-search
