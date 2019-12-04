@@ -14,3 +14,5 @@ alias ls=exa
 alias shuttle-cli="RBENV_VERSION=2.4.2 shuttle-cli"
 
 alias mixer='mix compile --force --warnings-as-errors; compile_out=$?; mix format; format_out=$?; mix credo; credo_out=$?; mix test; test_out=$?; echo "\033[0;32m\n\n    COMPILE -  FORMAT -  CREDO -  TEST\033[0m\n\n";'
+
+alias rubochanged='git diff-tree -r --no-commit-id --name-only head origin/master | grep -v db/schema.rb | xargs rubocop'
