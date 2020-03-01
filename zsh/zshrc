@@ -7,6 +7,8 @@ export CODE_DIR=~/code/
 
 export JAVA_HOME=`/usr/libexec/java_home`
 
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
 # you'll have access to them in your scripts.

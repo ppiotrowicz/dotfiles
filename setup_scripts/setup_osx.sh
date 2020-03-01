@@ -31,3 +31,9 @@ defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 # Enable 3-finger drag
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+
+# Better quality for bluetooth headphones (supposedly)
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+# Disable lookup in dictionary with C-M-d
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 70 '<dict><key>enabled</key><false/></dict>'
