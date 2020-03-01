@@ -1,0 +1,116 @@
+add_newline = false
+
+prompt_order = [
+    "username",
+    "hostname",
+    "directory",
+    "git_branch",
+    "git_state",
+    "git_status",
+    "line_break",
+    "character",
+]
+
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[character]
+# symbol = "⣿⣿ ➜"
+# vicmd_symbol = "⠰⠆ ➜"
+symbol = "⠰⠆"
+vicmd_symbol = "⣿⣿"
+style_success = "blue"
+use_symbol_for_status = false
+
+[cmd_duration]
+disabled = true
+
+[conda]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+truncation_length = 8
+style = "white"
+disabled = false
+
+[dotnet]
+disabled = true
+
+[elm]
+disabled = true
+
+[env_var]
+disabled = true
+
+[git_branch]
+prefix = ""
+style = "green"
+# truncation_length = 32
+# truncation_symbol = "…"
+disabled = false
+
+[git_commit]
+style = "green"
+disabled = false
+
+[git_state]
+disabled = false
+
+[git_status]
+stashed = ""
+disabled = false
+
+[golang]
+disabled = true
+
+[haskell]
+disabled = true
+
+[hg_branch]
+disabled = true
+
+[nix_shell]
+disabled = true
+
+[java]
+disabled = true
+
+[memory_usage]
+disabled = true
+
+[crystal]
+disabled = true
+
+[nodejs]
+disabled = true
+
+[package]
+disabled = true
+
+[php]
+disabled = true
+
+[python]
+disabled = true
+
+[ruby]
+disabled = true
+
+[rust]
+disabled = true
+
+[singularity]
+disabled = true
+
+[terraform]
+disabled = true
+
+[time]
+disabled = true
+
+[username]
+disabled = true

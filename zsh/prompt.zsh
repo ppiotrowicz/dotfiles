@@ -1,34 +1,36 @@
 autoload colors && colors
-autoload -Uz vcs_info
+# autoload -Uz vcs_info
 
-zstyle ':vcs_info:*' stagedstr '%F{green}✱'
-zstyle ':vcs_info:*' unstagedstr '%F{red}✱'
-zstyle ':vcs_info:*' check-for-changes false
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
-zstyle ':vcs_info:*' enable git
+# zstyle ':vcs_info:*' stagedstr '%F{green}✱'
+# zstyle ':vcs_info:*' unstagedstr '%F{red}✱'
+# zstyle ':vcs_info:*' check-for-changes false
+# zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
+# zstyle ':vcs_info:*' enable git
 
-precmd () {
-    if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%f'
-    } else {
-        zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%F{yellow}*%f'
-    }
+# precmd () {
+#     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
+#         zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%f'
+#     } else {
+#         zstyle ':vcs_info:*' formats ' %F{green}%b %c%u%F{yellow}*%f'
+#     }
 
-    vcs_info
-}
+#     vcs_info
+# }
 
-setopt prompt_subst
+# setopt prompt_subst
 
-TRAPWINCH() {
-  zle && { zle reset-prompt; zle -R }
-}
+# TRAPWINCH() {
+#   zle && { zle reset-prompt; zle -R }
+# }
 
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="${${KEYMAP/vicmd/||}/(main|viins)/::}"
-    PROMPT='%{$fg[blue]%}$VIM_PROMPT %{$fg[white]%}%~${vcs_info_msg_0_/#% /}%{$fg[white]%}>%{$reset_color%} '
+# function zle-line-init zle-keymap-select {
+#     VIM_PROMPT="${${KEYMAP/vicmd/||}/(main|viins)/::}"
+#     PROMPT='%{$fg[blue]%}$VIM_PROMPT %{$fg[white]%}%~${vcs_info_msg_0_/#% /}%{$fg[white]%}>%{$reset_color%} '
 
-    zle reset-prompt
-}
+#     zle reset-prompt
+# }
 
-zle -N zle-line-init
-zle -N zle-keymap-select
+# zle -N zle-line-init
+# zle -N zle-keymap-select
+
+eval "$(starship init zsh)"
