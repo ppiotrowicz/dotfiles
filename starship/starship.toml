@@ -1,12 +1,9 @@
 add_newline = false
 
 prompt_order = [
-    "username",
-    "hostname",
     "directory",
     "git_branch",
     "git_state",
-    "git_status",
     "line_break",
     "character",
 ]
@@ -18,8 +15,6 @@ disabled = true
 disabled = true
 
 [character]
-# symbol = "⣿⣿ ➜"
-# vicmd_symbol = "⠰⠆ ➜"
 symbol = "⠰⠆"
 vicmd_symbol = "⣿⣿"
 style_success = "blue"
@@ -34,7 +29,7 @@ disabled = true
 [directory]
 truncate_to_repo = false
 truncation_length = 8
-style = "white"
+style = "blue"
 disabled = false
 
 [dotnet]
@@ -49,7 +44,7 @@ disabled = true
 [git_branch]
 prefix = ""
 style = "green"
-# truncation_length = 32
+# truncation_length = 64
 # truncation_symbol = "…"
 disabled = false
 
@@ -62,7 +57,7 @@ disabled = false
 
 [git_status]
 stashed = ""
-disabled = false
+disabled = true
 
 [golang]
 disabled = true
