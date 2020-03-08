@@ -25,19 +25,21 @@ focus           < l                 : yabai -m window --focus east
 focus           < h                 : yabai -m window --focus west
 
 # Space focus movement
-focus           < c                 : yabai -m space --focus 1 ; skhd -k "ctrl - return"
-focus           < w                 : yabai -m space --focus 2 ; skhd -k "ctrl - return"
-focus           < r                 : yabai -m space --focus 3 ; skhd -k "ctrl - return"
-focus           < e                 : yabai -m space --focus 4 ; skhd -k "ctrl - return"
-focus           < t                 : yabai -m space --focus 5 ; skhd -k "ctrl - return"
-focus           < m                 : yabai -m space --focus 6 ; skhd -k "ctrl - return"
+focus           < cmd - c           : yabai -m space --focus 1 ; skhd -k "ctrl - return"   ; slack
+focus           < cmd - g           : yabai -m space --focus 2 ; skhd -k "ctrl - return"   ; gmail
+focus           < cmd - w           : yabai -m space --focus 3 ; skhd -k "ctrl - return"   ; web
+focus           < cmd - s           : yabai -m space --focus 4 ; skhd -k "ctrl - return"   ; stuff
+focus           < cmd - e           : yabai -m space --focus 5 ; skhd -k "ctrl - return"   ; emacs
+focus           < cmd - t           : yabai -m space --focus 6 ; skhd -k "ctrl - return"   ; terminal
+focus           < cmd - m           : yabai -m space --focus 7 ; skhd -k "ctrl - return"   ; music
 
-focus           < 1                 : yabai -m space --focus 1
-focus           < 2                 : yabai -m space --focus 2
-focus           < 3                 : yabai -m space --focus 3
-focus           < 4                 : yabai -m space --focus 4
-focus           < 5                 : yabai -m space --focus 5
-focus           < 6                 : yabai -m space --focus 6
+focus           < 1                 : yabai -m space --focus 1 ; skhd -k "ctrl - return"
+focus           < 2                 : yabai -m space --focus 2 ; skhd -k "ctrl - return"
+focus           < 3                 : yabai -m space --focus 3 ; skhd -k "ctrl - return"
+focus           < 4                 : yabai -m space --focus 4 ; skhd -k "ctrl - return"
+focus           < 5                 : yabai -m space --focus 5 ; skhd -k "ctrl - return"
+focus           < 6                 : yabai -m space --focus 6 ; skhd -k "ctrl - return"
+focus           < 7                 : yabai -m space --focus 7 ; skhd -k "ctrl - return"
 
 focus           < n                 : yabai -m space --focus next
 focus           < p                 : yabai -m space --focus prev
@@ -55,5 +57,19 @@ swap            < j                 : yabai -m window --swap south
 swap            < l                 : yabai -m window --swap east
 swap            < h                 : yabai -m window --swap west
 
-# TODO: move window to space
-# TODO: launch application in proper space?
+# Move window to space
+focus           < shift - c           : yabai -m window --space 1 ; skhd -k "ctrl - return"
+focus           < shift - g           : yabai -m window --space 2 ; skhd -k "ctrl - return"
+focus           < shift - w           : yabai -m window --space 3 ; skhd -k "ctrl - return"
+focus           < shift - s           : yabai -m window --space 4 ; skhd -k "ctrl - return"
+focus           < shift - e           : yabai -m window --space 5 ; skhd -k "ctrl - return"
+focus           < shift - t           : yabai -m window --space 6 ; skhd -k "ctrl - return"
+focus           < shift - m           : yabai -m window --space 7 ; skhd -k "ctrl - return"
+
+focus           < shift - 1           : yabai -m window --space 1 ; skhd -k "ctrl - return"
+focus           < shift - 2           : yabai -m window --space 2 ; skhd -k "ctrl - return"
+focus           < shift - 3           : yabai -m window --space 3 ; skhd -k "ctrl - return"
+focus           < shift - 4           : yabai -m window --space 4 ; skhd -k "ctrl - return"
+focus           < shift - 5           : yabai -m window --space 5 ; skhd -k "ctrl - return"
+focus           < shift - 6           : yabai -m window --space 6 ; skhd -k "ctrl - return"
+focus           < shift - 7           : yabai -m window --space 7 ; skhd -k "ctrl - return"
