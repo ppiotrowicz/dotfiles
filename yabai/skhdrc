@@ -60,5 +60,5 @@ focus           < shift - 6           : yabai -m window --space 6 ; skhd -k "cmd
 focus           < shift - 7           : yabai -m window --space 7 ; skhd -k "cmd - space"
 
 # Window properties
-focus           < t                   : yabai -m window --toggle sticky
-focus           < f                   : yabai -m window --toggle float
+focus           < shift - t           : yabai -m window --toggle sticky
+focus           < shift - f           : yabai -m window --toggle float
