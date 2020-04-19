@@ -60,9 +60,8 @@ export PATH="$HOME/code/elixir-ls/release/:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH="/usr/local/opt/elasticsearch@5.6/bin:$PATH"
-export PATH="$PATH:$HOME/Library/Python/3.7/bin"
 export PATH="$PATH:/usr/local/opt/emacs-mac/bin"
-# export PATH="/usr/local/opt/mysql@5.6/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
@@ -93,3 +92,6 @@ bindkey '^w' backward-kill-word
 
 # ctrl-r starts searching history backward
 bindkey '^r' history-incremental-search-backward
+
+# python
+export PIP_REQUIRE_VIRTUALENV=true
