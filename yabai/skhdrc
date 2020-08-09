@@ -33,6 +33,8 @@ focus           < 4                 : yabai -m space --focus 4 ; skhd -k "cmd - 
 focus           < 5                 : yabai -m space --focus 5 ; skhd -k "cmd - space"
 focus           < 6                 : yabai -m space --focus 6 ; skhd -k "cmd - space"
 focus           < 7                 : yabai -m space --focus 7 ; skhd -k "cmd - space"
+focus           < 8                 : yabai -m space --focus 8 ; skhd -k "cmd - space"
+focus           < 9                 : yabai -m space --focus 9 ; skhd -k "cmd - space"
 
 focus           < n                 : yabai -m space --focus next
 focus           < p                 : yabai -m space --focus prev
@@ -58,7 +60,21 @@ focus           < shift - 4           : yabai -m window --space 4 ; skhd -k "cmd
 focus           < shift - 5           : yabai -m window --space 5 ; skhd -k "cmd - space"
 focus           < shift - 6           : yabai -m window --space 6 ; skhd -k "cmd - space"
 focus           < shift - 7           : yabai -m window --space 7 ; skhd -k "cmd - space"
+focus           < shift - 8           : yabai -m window --space 8 ; skhd -k "cmd - space"
+focus           < shift - 9           : yabai -m window --space 9 ; skhd -k "cmd - space"
 
 # Window properties
 focus           < shift - t           : yabai -m window --toggle sticky
 focus           < shift - f           : yabai -m window --toggle float
+
+# Floating windows resize
+grid            < h                   : yabai -m window --grid 1:2:0:0:1:1 # split into 2, move to left side
+grid            < l                   : yabai -m window --grid 1:2:1:0:1:1 # split into 2, move to right side
+grid            < k                   : yabai -m window --grid 1:1:0:0:1:1 # fullscreen
+grid            < j                   : yabai -m window --grid 3:3:1:1:1:1 # small, centered
+
+# Corners
+grid            < shift - j           : yabai -m window --grid 5:5:0:4:1:1 # small, bottom left corner
+grid            < shift - k           : yabai -m window --grid 5:5:4:4:1:1 # small, bottom right corner
+grid            < shift - u           : yabai -m window --grid 5:5:0:0:1:1 # small, top left corner
+grid            < shift - i           : yabai -m window --grid 5:5:4:0:1:1 # small, top right corner
