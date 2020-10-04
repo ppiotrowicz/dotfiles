@@ -1,12 +1,12 @@
 add_newline = false
 
-prompt_order = [
-    "directory",
-    "git_branch",
-    "git_state",
-    "line_break",
-    "character",
-]
+format = """\
+    $directory\
+    $git_branch\
+    $git_state\
+    $line_break\
+    $character\
+    """
 
 [aws]
 disabled = true
@@ -15,10 +15,10 @@ disabled = true
 disabled = true
 
 [character]
-symbol = "⠰⠆"
-vicmd_symbol = "⣿⣿"
-style_success = "blue"
-use_symbol_for_status = false
+format = "$symbol "
+success_symbol = "[⠰⠆](blue)"
+error_symbol = "[⠰⠆](red)"
+vicmd_symbol = "[⣿⣿](blue)"
 
 [cmd_duration]
 disabled = true
@@ -42,7 +42,7 @@ disabled = true
 disabled = true
 
 [git_branch]
-prefix = ""
+format = "[$symbol$branch]($style)"
 style = "green"
 # truncation_length = 64
 # truncation_symbol = "…"
