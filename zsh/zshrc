@@ -9,8 +9,6 @@ export ZSH=$HOME/dotfiles
 # your project folder that we can `c [tab]` to
 export CODE_DIR=~/code/
 
-export JAVA_HOME=`/usr/libexec/java_home`
-
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # Stash your environment variables in ~/.localrc. This means they'll stay out
@@ -56,12 +54,8 @@ export GOPATH="$HOME/code/go"
 
 # Path
 export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/code/elixir-ls/release/:$PATH"
 export PATH="$GOPATH/bin:$PATH"
-export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
-export PATH="/usr/local/opt/elasticsearch@5.6/bin:$PATH"
-export PATH="$PATH:/usr/local/opt/emacs-mac/bin"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="$PATH:/usr/local/opt/emacs-plus@27/bin"
 
 export ERL_AFLAGS="-kernel shell_history enabled"
 
